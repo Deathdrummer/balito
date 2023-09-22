@@ -1,0 +1,2249 @@
+@import "../../repository/css/assets/mixins"
+
+
++setMainFont($adminFontFamily, regular)
+
+
+html
+	+scrollbar(#c2c8ce, #6785a2)
+
+
+
+	
+	
+	
+.selectize-dropdown
+	max-height: 100px !important
+	+scrollbar(#eee, #d0d6da, 6px, 1px)
+
+
+
+	
+
+
+	
+
+.header
+	background-color: #76838e
+	margin-bottom: 1rem
+	
+	&__container
+		display: flex
+		justify-content: space-between
+		position: relative
+		+scrollAdapt(15px, $grid-gutter-width)
+	
+	&__item
+		display: flex
+		align-items: center
+		min-height: $headerHeight
+		
+		img
+			max-height: 40px
+			width: auto
+		
+		p
+			color: #fff
+			font-size: 20px
+			margin-right: 1rem
+			margin-bottom: 0
+			text-transform: uppercase
+		
+		small
+			color: #fff
+			font-size: 12px
+			margin-right: 1rem
+			margin-bottom: 0
+			text-transform: uppercase
+			
+		
+		button
+			//height: $headerHeight
+			//width: $headerHeight + 20
+			font-size: 28px
+			margin-right: 0
+			//background-color: darken(#76838e, 12%)
+			background-color: transparent
+			border: none
+			color: #33424e
+			//padding-left: 14px
+			//padding-right: 14px
+			padding: 0
+			margin: 0
+			cursor: pointer
+			transition: color 0.16s
+			
+			
+			+ button
+				//border-left: 1px solid #86919a
+				margin-left: 25px
+			
+			&:hover
+				//background-color: darken(#76838e, 10%)
+				color: #fff
+			
+			&:active
+				//background-color: darken(#76838e, 18%)
+				//transition: background-color 0s
+		
+		.navigation
+			font-size: 40px
+			transition: color 0.16s
+			color: #d6dbe0
+			
+			&:hover
+				color: lighten(#d6dbe0, 10%)
+		
+		&.opened
+			.navigation
+				color: #fff
+		
+		
+		
+		//---------------------------------------------------------------- Меню
+		nav.main_nav
+			opacity: 0
+			pointer-events: none
+			position: absolute
+			width: 250px
+			background-color: #b8c1c7
+			box-shadow: 0 10px 12px -4px rgba(30, 36, 41, 0.68)
+			top: $headerHeight
+			z-index: 100
+			transition: opacity 0.16s
+			
+			ul
+				padding: 0
+				margin-bottom: 0
+				//margin: $grid-gutter-width / 2
+				
+				li
+					display: flex
+					align-items: center
+					cursor: pointer
+					padding: 0px 6px
+					height: 40px
+					font-size: 14px
+					line-height: 16px
+					list-style: none
+					color: #606971
+					border: 1px solid transparent
+					// background-color: lighten(#c7ccd0, 2%)
+					transition: background-color 0.16s
+					
+					+ li
+						border-top: 1px solid #a9afb3
+					
+					&:hover
+						background-color: lighten(#c7ccd0, 4%)
+						color: #366082
+						
+					&.active, &:active
+						background-color: #4296bb
+						color: #fff
+						transition: background-color 0s
+		
+		
+		&.opened .main_nav
+			opacity: 1
+			pointer-events: auto
+		
+		
+		.select
+			background-color: #d6dbe0
+			border-color: #647786
+			transition: background-color 0.16s
+			
+			&::after
+				color: #76838e
+			
+			&.focused
+				border-color: #647786
+				background-color: lighten(#d6dbe0, 10%)
+				
+				&::after
+					color: #33424e
+				
+			
+			select
+				height: 100%
+				color: #33424e
+
+
+
+
+
+
+.footer
+	background-color: #e6e6e6
+	padding-top: $grid-gutter-width / 2
+	padding-bottom: $grid-gutter-width / 2
+	
+	&__container
+		+scrollAdapt(15px, $grid-gutter-width)
+		
+	p
+		font-size: 14px
+		margin-bottom: 0
+		color: darken($bgColor, 65%)
+		
+		a
+			color: inherit
+			font-size: inherit
+			
+			&:hover
+				text-decoration: underline
+
+
+
+
+
+
+
+
+
+
+.main
+	position: relative
+	width: 100%
+	
+	&__container
+		+scrollAdapt(15px, $grid-gutter-width)
+	
+	//---------------------------------------------------------------- Авторизация
+	.auth_form
+		display: inline-block
+		padding: 16px
+		background-color: #eaedf3
+		margin: 0 auto
+		text-align: center
+		border: 1px solid #d1d3d8
+		border-radius: 3px
+		align-items: center
+		+resp(width, (xs: 100%, sm: 300px))
+		
+		.field
+			margin-bottom: 15px
+		
+		
+		
+		button[type="submit"]
+			font-size: 16px
+			height: 34px
+			margin-right: 1rem
+			background-color: #657a84
+			border: none
+			color: #fff
+			padding-left: 1rem
+			padding-right: 1rem
+			cursor: pointer
+			text-transform: uppercase
+			border-radius: 3px
+			transition: background-color 0.16s
+			
+			i
+				color: #fff
+			
+			&:hover
+				background-color: darken(#657a84, 6%)
+	
+	
+	
+
+
+		
+//---------------------------------------------------------------- Форма
+#sectionWait
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background-color: rgba(#fff, 0.8)
+	z-index: 999
+	display: flex
+	justify-content: center
+	pointer-events: none
+	opacity: 0
+	transition: opacity 0.3s
+	
+	.info
+		position: fixed
+		top: calc(50vh - 30px)
+		pointer-events: none
+		text-align: center
+		
+		i
+			font-size: 70px
+			color: #536675
+		
+		p
+			margin-top: 10px
+			margin-bottom: 0
+			font-size: 16px
+			color: #536675
+			
+			&::after
+				content: "Загрузка страницы..."
+	
+	&.filemanager
+		p::after
+			content: "Загрузка файлов..."!important
+	
+	&.visible
+		pointer-events: auto
+		opacity: 1
+		
+	
+	
+	
+@keyframes changeButtonPos
+	from
+		top: -30px
+	to
+		top: 15px 	
+	
+.section
+	padding-bottom: 0
+	
+	&_title
+		display: flex
+		justify-content: space-between
+		align-items: center
+		margin-bottom: 2rem
+		min-height: 40px
+		
+		h2
+			margin-bottom: 0
+			font-size: 28px
+			line-height: 28px
+			color: darken($bgColor, 65%)
+			text-transform: uppercase
+			line-height: 28px
+		
+		button.fixed
+			position: fixed
+			right: 20px
+			top: 15px
+			z-index: 10
+			box-shadow: 0 0 0px 4px rgba(66, 150, 187, 0.38)
+			animation: changeButtonPos 0.16s
+					
+		
+
+
+
+
+
+
+
+
+.green
+	&:not(.green_bg)
+		color: #62ad62 !important
+	
+	&_bg
+		background-color: #62ad62 !important
+	
+	&_hovered
+		&:hover
+			background-color: darken(#62ad62, 7%) !important
+		
+		&:active
+			background-color: darken(#62ad62, 15%) !important
+
+
+.red
+	&:not(.red_bg)	
+		color: #da5a5a !important
+	
+	&_bg
+		background-color: #da5a5a !important
+	
+	&_hovered
+		&:hover
+			background-color: darken(#da5a5a, 7%) !important
+		
+		&:active
+			background-color: darken(#da5a5a, 15%) !important
+	
+	
+
+
+.ratingcolor
+	&_1
+		color: #f00
+	
+	&_2
+		color: #ff9b20
+		
+	&_3
+		color: #ffd400
+		
+	&_4
+		color: #aad401
+		
+	&_5
+		color: #0dc501
+		
+	
+
+
+
+
+
+.scroll_y
+	overflow-x: hidden
+	overflow-y: scroll
+	
+	&:not(.scroll_y_thin)
+		+scrollbar(#b1bac2, #808f9c, 8px, 0px)
+		
+	&_thin
+		+scrollbar(#dde3e8, #b3c0d0, 6px, 0px)
+
+
+
+
+
+
+
+p
+	&.empty
+		color: #aeb8bd
+		
+	&.strong
+		+font($adminFontFamily, bold)
+	
+	&.error, &.red, &.remove
+		color: #c54747
+	
+	&.small
+		font-size: 0.8em
+		
+	&.dark
+		color: #f0f3f5
+		
+	&.center
+		text-align: center
+	
+	small
+		font-size: 0.8em
+
+	
+
+
+[onclick]
+	cursor: pointer
+	color: #2fb2ff
+	
+		
+		
+.buttons
+	margin-top: 0.8rem
+	font-size: 0
+	word-spacing: 4px
+	
+	&.inline
+		display: inline-flex !important
+		vertical-align: middle
+	
+	&.notop
+		margin-top: 0
+	
+	&.right
+		text-align: right
+		float: right
+	
+	button, .button
+		display: inline-block
+		+btn()
+		
+		&.green
+			background-color: #62ad62
+			
+			&:hover
+				background-color: darken(#62ad62, 7%)
+				
+			&:active
+				background-color: darken(#62ad62, 15%)
+		
+		> *
+			color: #fff
+		
+		&.nowrap
+			white-space: nowrap
+
+
+
+
+
+
+
+//------------------------------- Табы
+.tabstitles
+	display: flex
+	//border: 1px solid darken($bgColor, 10%)
+	box-shadow: 0 0 0 1px darken($bgColor, 10%) inset
+	background-color: darken($bgColor, 5)
+	padding-left: 0
+	height: 40px
+	align-items: center
+	border-radius: 3px
+	touch-callout: none
+	user-select: none
+	overflow: hidden
+	
+	&:empty
+		display: none
+	
+	li
+		position: relative
+		display: flex
+		align-items: center
+		list-style: none
+		font-size: 14px
+		line-height: 12px
+		height: 100%
+		padding-left: 15px
+		padding-right: 15px
+		cursor: pointer
+		color: #466580
+		max-width: 200px
+		border-right: 1px solid darken($bgColor, 10%)
+		transition: background-color 0.16s, color 0.16s
+		
+		&:not(.left)
+			text-align: center
+		
+		&.left
+			text-align: left
+		
+		&.numeric
+			padding-left: 2px !important
+			
+			> *
+				position: relative
+				padding-left: 8px
+				+font($adminFontFamily, bold)
+				margin-right: 8px
+				font-size: 14px
+				display: block
+				text-align: center
+		
+		
+		&.active
+			background-color: #466580
+			color: #fff
+			
+			span
+				color: #fff
+		
+		
+		&:hover:not(.active)
+			background-color: darken($bgColor, 15%)
+		
+		&:active:not(.active)
+			background-color: darken($bgColor, 20%) !important
+			color: #466580
+			
+			& ~ li
+				background-color: transparent !important
+				color: #466580
+		
+		.remove
+			border-radius: 50%
+			border: 1px solid #ff9292
+			background-color: #fff
+			font-size: 16px
+			color: lighten(#f00, 20%)
+			padding: 2px
+			width: 20px
+			height: 20px
+			
+			i
+				text-shadow: 0 0 4px #fff
+				font-size: 14px
+			
+			&:hover
+				i
+					color: #f00
+			
+	
+	&.sub
+		height: 30px
+		
+		li
+			font-size: 12px
+			line-height: 12px
+			padding-left: 15px
+			padding-right: 15px
+			max-width: 200px
+			
+			&.active
+				background-color: #587a98
+		
+	
+.tabscontent
+	&:empty
+		display: none
+	
+	> *
+		display: none
+		
+		&.visible
+			display: block
+		
+		h3
+			margin-bottom: 2rem
+			font-size: 20px
+			line-height: 20px
+			color: darken($bgColor, 65%)
+			text-transform: uppercase
+			line-height: 20px
+
+
+	
+
+
+
+
+.fieldset
+	> tbody
+		> tr
+			&.changed
+				background-color: #e4fde7
+				
+			> td
+				padding: 20px 10px
+				border: none //1px solid #ccc
+				vertical-align: top
+				
+				&:nth-child(1)
+					text-align: right
+					padding-left: 0
+					
+					&[colspan="2"]
+						padding-right: 0
+					
+					&.default
+						width: 300px
+					
+					> div
+						min-height: 34px
+						display: flex
+						align-items: center
+						justify-content: flex-end
+						
+						> span
+							font-size: 14px
+							line-height: 16px
+							
+							&:first-letter
+								text-transform: uppercase
+							
+							&::after
+								content: ':'
+							
+							
+				
+				&:nth-child(2)
+					font-size: 0
+					padding-right: 0
+					
+					.text
+						font-size: 14px
+						height: 34px
+						display: flex
+						align-items: center
+					
+					.green
+						color: #1db31b
+					
+					.red
+						color: #f36161
+					
+					small.text
+						font-size: 12px
+				
+					.textarea
+						font-size: initial
+
+
+
+
+
+input, textarea
+	+placeholder(#bbb, $adminFontFamily, light)
+
+
+
+.field
+	+field()
+	
+
+.textarea
+	+textarea()
+	
+	&:not(.textarea_opened)
+		.textarea__addblock
+			pointer-events: none
+			opacity: 0
+	
+	&.textarea_opened
+		.textarea__addblock
+			pointer-events: auto
+			opacity: 1
+	
+	&__addblock
+		position: absolute
+		left: -1px
+		right: -1px
+		min-height: 45px
+		//width: 100%
+		//max-width: 100%
+		border: 1px solid #d0d6da
+		border-radius: 0 0 2px 2px
+		background-color: #fff
+		z-index: 10000
+		box-shadow: 0 10px 20px -4px rgba(0, 0, 0, 0.7)
+		align-items: center
+		padding: 2px
+		transition: opacity 0.16s
+		display: flex
+		align-items: flex-end
+		
+		.textareafields
+			flex: 0 1 100%
+			margin-right: 4px
+						
+			&__label
+				display: block
+				font-size: 12px
+		
+			input, select
+				min-width: 0
+				max-width: 100%
+				width: 100%
+				font-size: 12px
+				padding-left: 2px
+				padding-right: 2px
+				height: 24px
+				border: 1px solid #d4d9dc
+				transition: border-color 0.16s, box-shadow 0.16s
+			
+				&:focus
+					border-color: #41e277
+					box-shadow: 0 0 0 1px #41e277 inset
+		
+		
+		.textareabutton
+			flex: 0 0 auto
+			
+			button
+				height: 24px
+				font-size: 12px
+				line-height: 12px
+				border-radius: 2px
+				background-color: #3a93cc
+				color: #fff
+				
+				i
+					color: #fff
+				
+				&:hover
+					background-color: darken(#3a93cc, 5%)
+				
+				&:active
+					background-color: darken(#3a93cc, 15%)
+		
+			
+			
+	
+.select
+	+select()
+
+.checkbox
+	+checkbox()
+	
+.radio
+	+radio()
+
+.file
+	+file()
+	
+	&__alt
+		width: 130px
+		min-width: 1px
+		height: 26px
+	
+	&.small
+		.file__alt
+			width: 80px
+			height: 22px
+			
+			input
+				font-size: 11px
+	
+	
+	
+		
+	
+
+
+
+
+
+
+
+.ddrtooltip
+	.jBox-container
+		overflow: hidden
+		box-shadow: 0 7px 18px 2px rgba(0, 0, 0, 0.6)
+		
+		.jBox-content
+			padding: 10px
+			min-height: 80px
+			
+			&.visible
+				&::after
+					content: ''
+					position: absolute
+					top: 0
+					left: 0
+					width: 100%
+					height: 100%
+					background-color: #ffffffc4
+				
+				&::before
+					content: ''
+	
+	&__wait
+		display: flex
+		justify-content: center
+		align-items: center
+		height: 100px
+		
+		&_abs
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			z-index: 10001
+			background-color: #ffffffc4
+			
+
+
+
+
+
+
+
+
+
+		
+
+	
+	
+		
+//---------------------------------------------------------------- Таблица (простая)
+table:not(.fieldset)
+	width: 100%
+	border-radius: 3px
+	
+	&#cloneHourssheetDate
+		display: none
+		
+	&.visible
+		display: table !important
+	
+	td
+		padding-left: 5px
+		padding-right: 5px
+		padding-top: 2px
+		padding-bottom: 2px
+		line-height: 0
+		
+		*
+			line-height: normal
+		
+		&.right
+			text-align: right
+		
+		&.center
+			text-align: center
+		
+	
+	thead
+		tr
+			background-color: #d7dbde
+			
+			td
+				font-size: 14px
+				line-height: 14px
+				+font($adminFontFamily, medium)
+				color: #536777
+				padding-top: 5px
+				padding-bottom: 5px
+				border: 1px solid darken(#d7dbde, 10%)
+				
+				i
+					cursor: pointer
+				
+				.nowrap, &.nowrap
+					white-space: nowrap
+				
+				&.nowidth
+					width: 1px
+				
+				&.active
+					background-color: #abb8c1
+					color: #00427b
+	
+	
+	tbody
+		background-color: #f7f7f7
+		
+		tr
+			&.changed
+				background-color: #eaffcd !important
+			
+			&.deleted
+				background-color: #d2d2d2
+				opacity: 0.2
+				pointer-events: none
+				@extend .noselect !optional
+			
+			&.warning
+				background-color: #ffe6e6 !important
+			
+			&.optional
+				background-color: #fff6ec !important
+				
+				td
+					height: 40px
+					
+					.avatar
+						width: 30px
+						height: 30px
+					
+					.list
+						height: 30px !important
+				
+			
+			&:nth-child(2n+1):not(.deleted)
+				background-color: #fff
+				
+			td
+				font-size: 14px
+				color: #667a8c
+				height: 52px
+				border: 1px solid #c8ced4
+				
+				&.noborder
+					//border: none
+				
+				&.nowidth
+					width: 1px
+				
+				&.nopadding
+					padding: 0
+				
+				&.center
+					text-align: center
+				
+				&.top
+					vertical-align: top
+				
+				.nowrap, &.nowrap
+					white-space: nowrap
+					
+				.avatar
+					width: 46px
+					height: 46px
+					display: inline-block
+					
+					background:
+						repeat: no-repeat
+						position: center center
+					
+					&:not(.avatar_contain)
+						background-size: cover
+										
+					&_contain
+						background-size: contain
+				
+				
+				.list
+					overflow-y: scroll
+					+scrollbar(#cbdbe2, #4296bb, 5px)
+					font-size: 12px
+					line-height: 10px
+					
+					
+	
+	tfoot
+		tr
+			background-color: #eceff1
+			
+			td
+				font-size: 14px
+				line-height: 14px
+				color: #536777
+				padding-top: 5px
+				padding-bottom: 5px
+				border: 1px solid darken(#eceff1, 10%)
+
+
+
+
+
+
+//----------------------------------------------------------- ddrpopup
+@keyframes ddrPopUpIn
+	from
+		background-color: transparent
+	to
+		background-color: #03101bd4
+
+@keyframes ddrPopUpOut
+	from
+		background-color: #03101bd4
+	to
+		background-color: transparent
+
+
+
+.ddrpopup
+	+scrollbar(#283442, #cad6e4, 8px)
+	
+	&_opening
+		animation: ddrPopUpIn 0.2s
+		animation-fill-mode: forwards
+	
+	&_closing
+		animation: ddrPopUpOut 0.2s
+		animation-fill-mode: forwards
+	
+	&__container
+		padding-top: 15px
+		padding-bottom: 15px
+	
+	&__win
+		background-color: #fff
+		box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.66)
+		border-radius: 3px
+		overflow: hidden
+		//transform: scale(5)
+		transform: scale(0.8)
+		//transform: translateY(-100vh)
+		
+		&_opening
+			transform: scale(1)
+			//transform: translateY(0)
+		
+		&_closing
+			transform: scale(1.2)
+			//transform: scale(0)
+			//opacity: 0
+			//transform: translateY(-100vh)
+				
+	
+	&__header
+		background-color: #76838e
+		position: relative
+		padding-left: 40px
+		padding-right: 40px
+		padding-top: 5px
+		padding-bottom: 5px
+	
+	&__title
+		text-align: center
+		color: #fff
+		+font($adminFontFamily, light)
+		
+		
+		&_1
+			+resp(font-size, (xs: 16px, sm: 20px, md: 28px, lg: 34px, xl: 38px), (line-height: 2))
+		&_2
+			+resp(font-size, (xs: 16px, sm: 20px, md: 26px, lg: 30px, xl: 34px), (line-height: 2))
+		&_3
+			+resp(font-size, (xs: 16px, sm: 18px, md: 22px, lg: 24px, xl: 28px), (line-height: 2))
+		&_4
+			+resp(font-size, (xs: 16px, sm: 18px, md: 20px, lg: 20px, xl: 22px), (line-height: 2))
+		&_5
+			+resp(font-size, (xs: 16px, sm: 18px, md: 18px, lg: 20px, xl: 20px), (line-height: 2))
+	
+	&__close
+		//background-color: #dc5656
+		top: calc(50% - 13px) 
+		
+		&::before, &::after
+			height: 3px
+			background-color: #ddd
+			border-radius: 2px
+			
+		&::before
+			top: calc(50% - 1.5px)
+			
+		&::after
+			top: calc(50% - 1.5px)
+		
+		&:hover 
+			&::before, &::after
+				background-color: #fff
+			
+		
+	&__content
+		padding: 10px
+		
+		p.dialog
+			+font($adminFontFamily, bold)
+			text-align: center
+			
+			&_remove
+				color: #e05353
+				
+		
+	&__footer
+		padding: 10px
+		
+	&__buttons
+		&_main, &_close
+			margin-left: 10px
+			height: 30px
+			border-radius: 3px
+			padding-left: 15px
+			padding-right: 15px
+			transition: background-color 0.16s
+		
+		&_main
+			background-color: #4296bb
+			color: #fff
+			
+			&:hover
+				background-color: darken(#4296bb, 10%)
+			
+			&:active
+				background-color: darken(#4296bb, 30%)
+				transition: background-color 0s
+			
+			&[disabled]
+				cursor: default
+				pointer-events: none
+				background-color: #b3b3b3
+		
+		&_close
+			background-color: #e05252
+			color: #fff
+			
+			&:hover
+				background-color: darken(#e05252, 10%)
+			
+			&:active
+				background-color: darken(#e05252, 30%)
+				transition: background-color 0s
+	
+	
+	&__wait
+		background-color: #ffffffbf
+		
+		.ddrpopupwait
+			i
+				color: #335c8c
+				font-size: 50px
+			
+			p
+				color: #335c8c
+				font-size: 14px
+	
+	
+	&__dialog
+		background-color: #303e4a75
+		
+		.popupdialog
+			background-color: #fff
+			padding: 10px
+			box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.66)
+			
+			&__message
+				+font($adminFontFamily, bold)
+				
+				.remove
+					color: #e05353
+				
+			&__buttons
+				margin-top: 15px
+				text-align: right
+				
+				button
+					margin: 0
+					height: 24px
+					border-radius: 3px
+					padding-left: 10px
+					padding-right: 10px
+					font-size: 13px
+					transition: background-color 0.16s
+					
+					+ button
+						margin-left: 8px
+					
+				
+					&:not(.cancel)
+						background-color: #658ea2
+						color: #fff
+						
+						&:hover
+							background-color: darken(#658ea2, 10%)
+						
+						&:active
+							background-color: darken(#658ea2, 30%)
+							transition: background-color 0s
+				
+					&.cancel
+						background-color: #e05353
+						color: #fff
+						
+						&:hover
+							background-color: darken(#e05353, 10%)
+						
+						&:active
+							background-color: darken(#e05353, 30%)
+							transition: background-color 0s
+				
+
+
+				
+			
+	
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------- notify
+.notifyjs-corner
+	top: 7rem !important
+	right: calc(100% - 100vw) !important
+	margin: 0 !important
+	margin-right: 22px !important
+
+
+.notifyjs-wrapper 
+	margin: 6px !important
+	text-align: right 
+
+.notifyjs-ddr-base 
+	display: inline-flex
+	align-items: center
+	padding: 12px 12px
+	border-radius: 3px 
+	& > * 
+		margin-bottom: 0
+	i 
+		flex-grow: 0
+		flex-shrink: 1
+		padding-right: 10px
+		font-size: 18px
+		line-height: 18px 
+	span 
+		text-align: left
+		font-size: 16px
+		line-height: 18px
+		flex-grow: 1
+		flex-shrink: 1
+		flex-basis: 290px
+		max-width: 500px 
+		background-color: transparent !important
+		a 
+			color: #fff
+			text-decoration: underline
+			font-weight: normal
+	&.notifyjs-ddr-success 
+		background-color: #88c700 
+
+		i 
+			color: #fff 
+
+		span 
+			color: #fff 
+	
+	&.notifyjs-ddr-error 
+		background-color: #f00 
+
+		i 
+			color: #fff 
+
+		span 
+			color: #fff 
+	
+	&.notifyjs-ddr-info 
+		background-color: #45a8ea 
+
+		i 
+			color: #fff 
+
+		span 
+			color: #fff 
+			
+
+
+
+
+
+
+
+
+
+
+
+// сортировка и добавление секций
+.pagescreenslabel
+	height: 30px
+	display: flex
+	align-items: flex-end
+	margin-bottom: 3px
+	
+	&__label
+		font-size: 14px
+		line-height: 14px
+	
+		strong
+			font-style: inherit
+			+font($adminFontFamily, medium)
+	
+
+.pagescreensblock
+	border: 1px solid #aaa
+	height: 300px
+	padding: 5px
+	overflow-y: scroll
+	+scrollbar(#ecf0f3, #7d99b1, 6px)
+	//margin-top: -2px
+
+	li
+		margin-bottom: 4px
+	
+		&.changed > div
+			background-color: #bbc6d0
+			transition: background-color 0s
+		
+		> div
+			position: relative
+			border: 1px solid darken(#dbe0e4, 3%)
+			background-color: #dbe0e4
+			height: 30px
+			padding-left: 6px
+			padding-right: 6px
+			border-radius: 3px
+			cursor: move
+			cursor: -webkit-grabbing
+			display: flex
+			align-items: center
+			transition: background-color 3s
+		
+			span
+				font-size: 14px
+				line-height: 14px
+				+font($adminFontFamily, medium)
+				color: #3e4e5a
+		
+			i
+				position: absolute
+				pointer-events: auto
+				font-size: 18px
+				transition: opacity 0.16s
+				opacity: 0.3
+				cursor: pointer
+			
+				&:hover
+					opacity: 1
+			
+				&.settings
+					color: #6190a5
+					right: 30px
+				
+				
+				&.remove
+					color: #c56161
+					right: 6px
+		
+		
+
+	&#allSections
+		.sortable-ghost
+			opacity: 1
+		
+		.sortable-chosen
+			opacity: 1
+		
+		.sortable-drag 
+			opacity: 1
+	
+		i
+			display: none
+
+	&#pageSections
+		.sortable-ghost
+			opacity: 1
+		
+		.sortable-chosen
+			//background-color: #0f0
+			opacity: 1
+	
+		.sortable-drag
+			background: #00f
+			opacity: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------- файлменеджер админская часть
+.filemanager
+	&__block
+		display: flex
+		justify-content: space-between
+		flex-direction: column
+	
+	&__dirs
+		width: 250px
+		//border-right: 1px solid #e4e4e4
+		//padding-right: 10px
+		overflow-y: auto
+		height: 100%
+		+scrollbar(#f6f6f6, #ccc, 10px)
+		
+	&__files
+		padding-left: 10px
+		
+	&__buttons
+		word-spacing: 6px
+		font-size: 0
+		
+		button
+			word-spacing: normal
+			font-size: 16px
+			line-height: 16px
+			width: 36px
+			height: 26px
+			border-radius: 2px
+			border: 1px solid #aaa
+			cursor: pointer
+			
+			&:hover
+				background-color: #aaa
+			
+			&:disabled
+				background-color: #f7f7f7
+				border-color: #ccc
+				cursor: default
+				
+				i
+					color: #bbb
+	
+	&__content
+		height: 100%
+		max-height: 100%
+		
+		p.empty
+			font-size: 18px
+			color: #aaa
+			
+			&.center
+				margin: auto
+		
+		
+		&_files
+			font-size: 0
+			background-color: #fff
+			margin-left: -5px
+			margin-right: -5px
+			height: calc(100vh - 215px)
+			overflow-y: scroll
+			overflow-x: hidden
+			+scrollbar(#f6f6f6, #ccc, 7px, 3px, 3px)
+			
+			
+			
+		.filmanager__file
+			text-align: center
+			display: inline-block
+			vertical-align: top
+			margin-bottom: 15px
+			+resp(width, (xs: 100%, sm: percentage(1/3), md: percentage(1/5), lg: percentage(1/6), xl: percentage(1/10)))
+			
+			&.selected, &.ui-selecting
+				.image
+					box-shadow: 0 0 0 1px #39b5ff, 0 0 0 1px #39b5ff inset 
+					border-color: #39b5ff !important
+					
+					img
+				
+				span
+					color: #333
+						
+				
+			.image
+				display: flex
+				align-items: center
+				justify-content: center
+				border: 1px solid #e7e7e7
+				border-radius: 2px
+				height: 120px
+				padding: 4px
+				margin: 0 5px
+				transition: border-color 0.16s
+				
+				&:hover
+					border-color: #39b5ff
+					
+					img
+					
+				img
+					max-width: 100%
+					max-height: 100%
+			
+			span
+				display: block
+				font-size: 12px
+				line-height: 12px
+				color: #8a949c
+				padding: 4px 8px 0
+				word-break: break-word
+				
+		&_dirs
+			overflow-y: auto
+			overflow-x: hidden
+			height: calc(100vh - 215px)
+			+scrollbar(#f6f6f6, #ccc, 7px, 3px, 3px)
+		
+		
+		
+	&__dirstree
+		padding-left: 0
+		
+		li
+			list-style: none
+			font-size: 16px
+			line-height: 16px
+			
+			span
+				cursor: pointer
+				display: inline-block
+				margin-bottom: 3px
+				color: #888
+				
+				&::before
+					content: '\f114'
+					margin-right: 3px
+					top: 1px
+					position: relative
+					font-family: fontAwesome
+					display: inline-block
+					width: 18px
+				
+				&:hover
+					color: #000
+				
+				&.disabled
+					color: #eee !important
+					cursor: default
+									
+				&.active
+					color: #009fff
+					
+					&::before
+						content: '\f115'
+						font-family: fontAwesome
+						
+		
+			ul
+				padding-left: 10px
+				margin-bottom: 4px
+				
+				li
+					font-size: 0.9em
+					
+					span::before
+						width: 1em
+				
+				ul
+					padding-left: 16px
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//-------------------------------------------------- файлменеджер клиентская часть
+.clientfilemanager
+	z-index: 10010
+	display: flex
+	flex-direction: column
+	position: fixed
+	left: calc(100vw + 340px)
+	padding: 10px 26px 10px 10px
+	width: 320px
+	background-color: #fff
+	box-shadow: -2px 0px 40px -10px rgba(24, 43, 60, 0.7)
+	height: 100%
+	transition: left 0.5s ease-out
+	
+	&.visible
+		left: calc(100vw - 320px)
+		transition: left 0.3s ease-out
+	
+	
+	&__dirs
+		flex: 0 0 250px
+		max-height: 250px
+		overflow-y: scroll
+		+scrollbar(#dae6f1, #69a3d4, 5px)
+		border: 1px solid #e6e6e6
+		padding: 4px
+		
+		p.empty
+			font-size: 16px
+			color: #aaa
+			
+			&.center
+				margin: auto
+		
+		li
+			list-style: none
+			font-size: 16px
+			line-height: 16px
+			
+			span
+				cursor: pointer
+				display: inline-block
+				margin-bottom: 3px
+				color: #888
+				
+				&::before
+					content: '\f114'
+					margin-right: 3px
+					font-family: fontAwesome
+					display: inline-block
+					width: 18px
+				
+				&:hover
+					color: #000
+				
+				&.disabled
+					color: #eee !important
+					cursor: default
+									
+				&.active
+					color: #009fff
+					
+					&::before
+						content: '\f115'
+						font-family: fontAwesome
+			
+			ul
+				padding-left: 8px
+				margin-bottom: 4px
+				
+				li
+					font-size: 0.94em
+					
+					span::before
+						width: 1em
+				
+				ul
+					padding-left: 12px 	
+					
+					
+	
+	&__files
+		flex: 1 1 100%
+		position: relative
+		max-height: 100%
+		overflow-y: scroll
+		overflow-x: hidden
+		+scrollbar(#dae6f1, #69a3d4, 5px)
+		border: 1px solid #e6e6e6
+		padding: 4px 4px
+		display: flex
+		flex-wrap: wrap
+		align-content: flex-start
+		justify-content: space-between
+		
+		&_loading::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background-color: rgba(#fff, 0.9)
+		
+		p.empty
+			font-size: 16px
+			color: #aaa
+			pointer-events: none
+			@extend .noselect !optional
+			
+			&.center
+				margin: auto
+				
+	&__file
+		text-align: center
+		display: inline-block
+		vertical-align: top
+		width: calc(50% - 2px)
+		margin-bottom: 10px
+		
+		.image
+			cursor: pointer
+			display: flex
+			align-items: center
+			justify-content: center
+			border: 1px solid #e7e7e7
+			border-radius: 2px
+			height: 120px
+			padding: 10px
+			//margin: 0 5px
+			transition: border-color 0.16s
+			
+			img
+				max-width: 100%
+				max-height: 100%
+			
+		&:hover
+			.image
+				border-color: #39b5ff
+			
+			span
+				color: darken(#8a949c, 30%) !important
+		
+		&:active
+			.image
+				box-shadow: 0 0 0 1px #39b5ff, 0 0 0 1px #39b5ff inset 
+				border-color: #39b5ff !important
+			
+			span
+				color: #0073d0 !important
+		
+		span
+			display: block
+			font-size: 12px
+			line-height: 12px
+			color: #8a949c
+			padding: 4px 4px 0
+			word-break: break-word
+		
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+
+
+
+
+
+.ddrtextarealist
+	border: 1px solid #888
+	width: 300px
+	height: 100px
+
+
+
+
+.ddrtooltipblock
+
+
+
+
+
+
+.newproductcats
+	margin-bottom: 10px
+	font-size: 14px
+	
+	.newproductcats
+		padding-left: 8px
+		font-size: 0.9em
+	
+	&__item
+		margin-bottom: 5px
+		
+		label
+			display: flex
+			align-items: center
+			
+			cursor: pointer
+		
+		
+		input
+			margin-right: 4px
+			
+		
+		span
+			
+		
+	
+	
+
+
+.productopswrap
+	&__title
+		font-size: 14px
+		display: block
+		text-align: center
+		background-color: #fff
+		z-index: 10
+		position: relative
+		margin-left: 10px
+		margin-right: 10px
+		color: #688b9a
+		margin-bottom: 10px
+	
+	h4
+		margin-bottom: 5px
+		padding-bottom: 2px
+		border-bottom: 1px solid #eee
+
+	.drow
+		margin-top: -10px
+	
+
+
+.productopscategories
+	height: 300px
+	overflow-y: scroll
+	overflow-x: hidden
+	+scrollbar(#eee, #8db1c1, 5px, 3px, 3px)
+	padding-right: 5px
+	font-size: 14px
+	
+	&__list
+		margin-bottom: 4px
+		
+		.productopscategories__list
+			font-size: 0.9em
+	
+	
+	&__item
+		cursor: pointer
+		color: #97a5ab
+			
+		&:hover
+			color: #000
+		
+		&.active
+			color: #000
+			
+	ul
+		padding-left: 3px
+		
+	
+	
+	
+	
+.productopsblock
+	position: relative
+	height: 300px
+	overflow-y: scroll
+	overflow-x: hidden
+	+scrollbar(#eee, #8db1c1, 5px, 3px, 3px)
+	padding-right: 5px
+	
+	&__wait
+		display: flex
+		align-items: center
+		justify-content: center
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		background-color: rgba(#fff, 0.9)
+		pointer-events: none
+		opacity: 0
+		z-index: 1
+		transition: opacity 0.16s
+		
+		&.visible
+			pointer-events: auto
+			opacity: 1
+		
+		i
+			font-size: 40px
+			color: #62899a
+	
+	&__item
+		margin-top: 10px
+		cursor: pointer
+		border: 1px solid #d4dde0
+		border-radius: 3px
+		position: relative
+		transition: border-color 0.16s
+		
+		&:hover
+			border-color: #90c9dc
+			
+			.productopsblock__title
+				color: #1591c7
+
+	&__image
+		z-index: -1
+		overflow: hidden
+		width: 100%
+		height: 96px
+		border-bottom: 1px solid #edf1f3
+		background:		
+			repeat: no-repeat
+			size: cover
+			position: center center
+		
+		
+	
+	
+	&__title
+		padding-top: 5px
+		font-size: 10px
+		text-align: center
+		height: 42px
+		color: #888
+		transition: color 0.16s
+		
+	
+
+
+	
+	
+.opstooltipwrap
+	overflow-y: scroll
+	overflow-x: hidden
+	+scrollbar(#eee, #8db1c1, 7px, 3px, 3px)
+	
+.opstooltip
+	margin-top: -8px
+	max-height: 204px
+	padding-right: 4px
+	
+	
+	&__item
+		text-align: center
+		border: 1px solid #eee
+		border-radius: 3px
+		padding: 4px
+		margin-top: 8px
+		cursor: pointer
+		transition: border-color 0.16s
+		
+		&:hover
+			border-color: #7bb9d4
+			
+			.opstooltip__label small
+				color: #1591c7
+		
+	&__color
+		width: 50px
+		height: 50px
+		border-radius: 50%
+		display: inline-block
+	
+	&__label
+		height: 30px
+		
+		small
+			display: block
+			color: #5f757f
+			word-spacing: normal
+			font-size: 10px
+			line-height: 10px
+			word-break: break-word
+			text-align: center
+	
+	
+	
+	
+
+
+
+
+
+
+.iconsblock
+	//overflow: hidden
+	//overflow-y: scroll
+	//max-height: 100px
+	//+scrollbar(#777, #eee, 6px)
+	
+	&__block
+		margin-top: -10px
+		
+	&__item
+		input[type="checkbox"]
+			display: none
+			
+			&:checked ~ .iconsblock__label
+				border-color: #488da9
+				box-shadow: 0 0 0 1px #488da9
+				transition: border-color 0s
+	
+	&__label
+		display: block
+		width: 100%
+		height: 52px
+		border: 3px solid #fff
+		box-shadow: 0 0 0 1px #cad4d8
+		padding: 2px
+		background-origin: content-box
+		margin-top: 10px
+		border-radius: 2px
+		cursor: pointer
+		transition: border-color 0.16s
+		background:		
+			repeat: no-repeat
+			size: contain
+			position: center center
+		
+		&:hover
+			border-color: #9ec1dc
+			box-shadow: 0 0 0 1px #9ec1dc
+	
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+
+.avatar
+	background:
+		repeat: no-repeat
+		position: center center
+	
+	&_cover
+		background-size: cover
+	
+	&_contain
+		background-size: contain
+	
+	&_bordered
+		border: 1px solid #d0d6da
+		border-radius: 3px
+	
+	&_rounded
+		border-radius: 50%
+		
+	&_inline
+		display: inline-block
+		
+	&_small
+		width: 80px
+		height: 80px
+	
+	&_pointer
+		cursor: pointer
+		
+	&_verysmall
+		width: 46px
+		height: 46px
+
+
+
+
+
+img.avatar
+	
+	&_cover
+		object-fit: cover
+	
+	&_contain
+		object-fit: contain
+	
+	&_bordered
+		border: 1px solid #d0d6da
+		border-radius: 3px
+	
+	&_rounded
+		border-radius: 50%
+		
+	&_inline
+		display: inline-block
+		
+	&_pointer
+		cursor: pointer
+
+
+
+
+
+
+
+.labelsrow
+	display: inline-flex
+	background-color: #fff
+	border: 1px solid #d0d6da
+	border-radius: 3px
+	overflow: hidden
+	
+	&__item
+		+ .labelsrow__item
+			border-left: 1px solid #eee
+			
+		
+		[type="checkbox"]
+			display: none
+			
+			&:checked
+				~ .labelsrow__label
+					background-color: #62899a
+					color: #fff
+					transition: background-color 0s
+					
+					.labelsrow__title
+						color: #fff
+						transition: color 0s
+	
+	&__label
+		display: flex
+		height: 34px
+		display: flex
+		align-items: center
+		padding: 0 10px
+		cursor: pointer
+		transition: background-color 0.16s
+		
+		&:hover
+			background-color: #e9eef1
+		
+		
+	
+	&__title
+		font-size: 12px
+		transition: color 0.16s
+		text-align: center
+	
+
+
+
+.reviewimage
+	position: relative
+	cursor: pointer
+	margin-bottom: 10px
+	display: flex
+	align-items: center
+	justify-content: center
+	
+	&::before
+		content: 'Открыть'
+		position: absolute
+		//top: calc(50% - 15px)
+		//top: calc(50% - 15px)
+		font-size: 16px
+		+font(fontAwesome)
+		color: rgba(#fff, 0.6)
+		opacity: 0
+		pointer-events: none
+		z-index: 10
+	
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: rgba(#000, 0.5)
+		opacity: 0
+		pointer-events: none
+		transition: opacity 0.16s
+		
+	&:hover
+		&::before
+			opacity: 1
+		
+		&::after
+			opacity: 1
+		
+		.reviewimage__close
+			opacity: 1
+		
+	
+	&__close
+		position: absolute
+		top: 5px
+		right: 5px
+		cursor: pointer
+		width: 20px
+		height: 20px
+		opacity: 0
+		z-index: 10
+		transition: opacity 0.16s
+		
+		&::before, &::after
+			content: ''
+			position: absolute
+			left: 0
+			top: calc(50% - 1px)
+			width: 100%
+			height: 2px
+			background-color: #fff
+		
+		&::before
+			transform: rotate(45deg)
+		
+		&::after
+			transform: rotate(-45deg)
+			

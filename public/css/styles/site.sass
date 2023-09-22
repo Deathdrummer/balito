@@ -1,0 +1,3384 @@
+@import "../../repository/css/assets/mixins"
+
+
+
++setMainFont($fontFamily, $fontWeight)
+
+
+body
+	overflow-x: hidden
+	width: 100vw
+
+.field
+	+field()
+	
+.textarea
+	+textarea()
+
+.select
+	+select()
+
+.checkbox
+	+checkbox()
+	
+.radio
+	+radio()
+
+.file
+	+file()
+
+
+input, textarea
+	+placeholder(#bbb, GothamPro, light)
+
+
+
+p.empty
+	color: #777575
+	
+	
+	
+.d-contents
+	display: contents	
+	
+
+	
+	
+button, .button
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	color: #000
+	border-radius: 0
+	text-transform: uppercase
+	
+	&:not(.button_small)
+		+resp(font-size, (xs: 16px, sm: 16px, md: 18px, lg: 18px, xl: 18px), (line-height: 0))
+		+resp(padding-left, (xs: 10px, sm: 14px, md: 16px, lg: 18px, xl: 30px), (padding-right: 0))
+		+resp(height, (xs: 34px, sm: 40px, md: 42px, lg: 46px, xl: 50px))
+		+font($fontFamily, black)
+	
+	&_small
+		+resp(font-size, (xs: 14px, sm: 15px, md: 16px, lg: 16px, xl: 16px), (line-height: 0))
+		+resp(padding-left, (xs: 8px, sm: 12px, md: 14px, lg: 16px, xl: 20px), (padding-right: 0))
+		+resp(height, (xs: 18px, sm: 20px, md: 22px, lg: 26px, xl: 30px))
+		+font($fontFamily, bold)
+		
+		&.button_transparent span, &.button_bordered span
+			color: #000
+			+font($fontFamily, regular)
+			+resp(font-size, (xs: 14px, sm: 15px, md: 16px, lg: 16px, xl: 16px), (line-height: 0))
+	
+	&_transparent
+		background: none
+	
+	&_bordered
+		border: 1px solid #000
+		transition: border-color 0.16s	
+		
+		&:hover
+			border-color: #ab2d77
+			
+		&:active
+			border-color: #cc2285
+			transition: color 0s
+	
+	&_transparent, &_bordered
+		&:hover
+			span
+				color: #ab2d77
+			
+			svg
+				fill: #ab2d77
+	
+	&_white
+		box-shadow: 0px 0px 25px rgba(#fff, 0.5)
+		background-color: #fff
+		transition: background-color 0.16s, box-shadow 0.16s
+		
+		&:hover
+			background-color: #ab2d77
+			box-shadow: 0px 0px 25px rgba(#ab2d77, 0.5)
+		
+		&:active
+			background-color: #cc2285
+			transition: background-color 0s, box-shadow 0s
+	
+	&_black
+		background: linear-gradient(96.18deg, #3F2835 -27.11%, #000000 100.89%)
+		color: #fff
+		
+		transition: background-color 0.16s, box-shadow 0.16s
+		
+		&:hover
+			background-color: #ab2d77
+			box-shadow: 0px 0px 25px rgba(#ab2d77, 0.5)
+		
+		&:active
+			background-color: #cc2285
+			transition: background-color 0s, box-shadow 0s
+	
+	span
+		+resp(font-size, (xs: 14px, lg: 16px, xl: 16px), (line-height: 0))
+		text-transform: uppercase
+		transition: color 0.16s
+		
+		~ *
+			+resp(margin-left, (xs: 8px, lg: 15px))
+	
+	svg
+		+resp(width, (xs: 20px, lg: 24px, xl: 24px), (height: 0))
+		transition: fill 0.16s
+	
+
+
+	
+	
+	
+	
+	
+
+	
+.section
+	&_padding
+		+resp(padding-top, (xs: 15px, sm: 20px, md: 30px, lg: 40px, xl: 50px), (padding-bottom: 0))
+	
+	&__top
+		+resp(margin-bottom, (xs: 20px, sm: 30px, md: 36px, lg: 40px, xl: 40px))
+		display: flex
+		justify-content: space-between
+		
+	&__header
+		+resp(margin-bottom, (xs: 20px, sm: 30px, md: 40px, lg: 45px, xl: 50px))
+	
+	&__title
+		+resp(font-size, (xs: 18px, sm: 22px, md: 34px, lg: 40px, xl: 48px), (line-height: -2))
+		+resp(margin-bottom, (xs: 5px, sm: 10px, md: 10px, lg: 15px, xl: 15px))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+	
+	&__desc
+		font-size: 14px
+		line-height: 14px
+	
+	&__button
+		flex: 0 0 auto
+		margin-left: 15px
+		
+		&:not(.section__button_ever)
+			+resp(display, (xs-down: none))
+		
+
+	
+	
+	
+	
+	
+	
+
+
+[scrolltop].visible svg
+	fill: #d080ad !important	
+	
+	
+	
+	
+	
+	
+	
+
+
+//----------------------------------------------------------- ddrpopup
+@keyframes ddrPopUpIn
+	from
+		background-color: transparent
+	to
+		background-color: rgba(#13050d, 0.88)
+
+@keyframes ddrPopUpOut
+	from
+		background-color: rgba(#13050d, 0.88)
+	to
+		background-color: transparent
+
+
+
+.ddrpopup
+	+scrollbar(#283442, #cad6e4, 8px)
+	
+	&_opening
+		animation: ddrPopUpIn 0.2s
+		animation-fill-mode: forwards
+	
+	&_closing
+		animation: ddrPopUpOut 0.2s
+		animation-fill-mode: forwards
+	
+	&__container
+		padding-top: 15px
+		padding-bottom: 15px
+	
+	&__win
+		background-color: #fff
+		box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.66)
+		border-radius: 0
+		overflow: hidden
+		+resp(padding-left, (sm: 10px, md: 20px, lg: 30px, xl: 70px), (padding-right: 0))
+		+resp(padding-top, (sm: 10px, md: 20px, lg: 24px, xl: 40px), (padding-bottom: 0))
+		//transform: scale(5)
+		transform: scale(0.8)
+		//transform: translateY(-100vh)
+		
+		&_modelview
+			padding: 0px
+		
+		&_cardimage
+			padding: 0px
+			//background: transparent
+			
+			.ddrpopup__header
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+			
+			.ddrpopup__content
+				padding: 0
+				display: flex
+				
+				img
+					object-fit: cover!important
+					
+				
+				
+			.ddrpopup__close
+				&::before, &::after
+					background-color: #ddd!important
+				&:hover 
+					&::before, &::after
+						background-color: #fff!important
+			
+			.ddrpopup__footer
+				display: none
+		
+		
+		&_modelview 
+			.ddrpopup__footer
+				display: none
+				
+					
+		
+		&_callback
+			+resp(padding-left, (sm: 10px, md: 15px, lg: 20px), (padding-right: 0))
+			+resp(padding-top, (sm: 10px, md: 15px, lg: 20px), (padding-bottom: 0))
+		
+		&_opening
+			transform: scale(1)
+			//transform: translateY(0)
+		
+		&_closing
+			transform: scale(1.2)
+			//transform: scale(0)
+			//opacity: 0
+			//transform: translateY(-100vh)
+				
+	
+	&__header
+		background-color: transparent
+		position: relative
+		padding-left: 10px
+		padding-right: 40px
+		padding-top: 5px
+		padding-bottom: 5px
+		min-height: 40px
+		justify-content: flex-start
+	
+	&__title
+		color: #444
+		+font($fontFamily, bold)
+		
+		&_1
+			+resp(font-size, (xs: 28px, sm: 34px, md: 38px, lg: 40px, xl: 42px), (line-height: 2))
+		&_2
+			+resp(font-size, (xs: 24px, sm: 26px, md: 28px, lg: 34px, xl: 38px), (line-height: 2))
+		&_3
+			+resp(font-size, (xs: 20px, sm: 24px, md: 28px, lg: 30px, xl: 32px), (line-height: 2))
+		&_4
+			+resp(font-size, (xs: 18px, sm: 20px, md: 22px, lg: 24px, xl: 28px), (line-height: 2))
+		&_5
+			+resp(font-size, (xs: 16px, sm: 18px, md: 20px, lg: 22px, xl: 24px), (line-height: 2))
+	
+	&__close
+		//background-color: #dc5656
+		top: calc(50% - 13px) 
+		
+		&::before, &::after
+			height: 3px
+			background-color: #ddd
+			border-radius: 2px
+			
+		&::before
+			top: calc(50% - 1.5px)
+			
+		&::after
+			top: calc(50% - 1.5px)
+		
+		&:hover 
+			&::before, &::after
+				background-color: $fontColor
+			
+		
+	&__content
+		padding: 10px
+		
+		p.dialog
+			+font($fontFamily, bold)
+			text-align: center
+			
+			&_remove
+				color: #e05353
+				
+		
+	&__footer
+		padding: 10px
+	
+	&__buttons
+		display: flex
+		
+		&_left
+			justify-content: flex-start
+			
+			button
+				margin-right: 20px !important
+			
+		&_right
+			justify-content: flex-end
+			
+			button
+				margin-left: 20px !important
+			
+		&_center
+			justify-content: center
+			
+			button
+				margin-left: 5px
+				margin-right: 5px
+			
+		&_between
+			justify-content: space-between
+			
+			button
+				margin-left: 0px !important
+				margin-right: 0px !important
+			
+		
+		
+		&_main, &_close
+			width: calc(50% - 15px)
+			height: 50px
+			border-radius: 1px
+			padding-left: 15px
+			padding-right: 15px
+			font-size: 16px
+			+font($fontFamily, regular)
+			transition: background-color 0.16s
+		
+		&_main
+			background-color: #ab2d77
+			box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.25)
+			color: #fff
+			
+			&:hover
+				background-color: darken(#ab2d77, 10%)
+			
+			&:active
+				background-color: darken(#ab2d77, 20%)
+				box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25)
+				transition: background-color 0s
+			
+			&[disabled]
+				cursor: default
+				pointer-events: none
+				background-color: #b3b3b3
+		
+		&_close
+			border: 1px solid #444
+			background-color: #fff
+			transition: border-color 0.16s	
+			
+			&:hover
+				//border-color: #ab2d77
+				
+			&:active
+				border-color: #000
+				transition: color 0s
+		
+			&:hover
+				span
+					color: #ab2d77
+			
+			
+			&:hover
+				//background-color: darken(#e05252, 10%)
+			
+			&:active
+				//background-color: darken(#e05252, 30%)
+				transition: background-color 0s
+	
+	
+	&__wait
+		background-color: rgba(255, 255, 255, 0.74)
+		
+		.ddrpopupwait
+			i
+				color: #335c8c
+				font-size: 50px
+			
+			p
+				color: #335c8c
+				font-size: 14px
+	
+	
+	&__dialog
+		background-color: rgba(48, 62, 74, 0.45)
+		
+		.popupdialog
+			background-color: #fff
+			padding: 10px
+			box-shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.66)
+			
+			&__message
+				+font($fontFamily, bold)
+				
+				.remove
+					color: #e05353
+				
+			&__buttons
+				margin-top: 15px
+				text-align: right
+				
+				button
+					margin: 0
+					height: 24px
+					border-radius: 3px
+					padding-left: 10px
+					padding-right: 10px
+					font-size: 13px
+					transition: background-color 0.16s
+					
+					+ button
+						margin-left: 8px
+					
+				
+					&:not(.cancel)
+						background-color: #e05353
+						color: #fff
+						
+						&:hover
+							background-color: darken(#e05353, 10%)
+						
+						&:active
+							background-color: darken(#e05353, 30%)
+							transition: background-color 0s
+				
+					&.cancel
+						background-color: #658ea2
+						color: #fff
+						
+						&:hover
+							background-color: darken(#658ea2, 10%)
+						
+						&:active
+							background-color: darken(#658ea2, 30%)
+							transition: background-color 0s
+		
+	
+	
+	//------------------------------------- форма обратной связи
+	&__form
+		margin-bottom: 30px
+	
+	&__formitem
+		position: relative
+		
+		+ .ddrpopup__formitem
+			margin-top: 30px
+		
+		p
+			font-size: 16px
+			+font($fontFamily, regular)
+			margin-bottom: 3px
+		
+		input
+			height: 40px
+			border: none
+			border-bottom: 2px solid #333
+			width: 100%
+			touch-callout: none
+			
+			&:focus
+			
+			&.error
+				background: none !important
+				
+				~ .animinpit__placeholder
+					color: #f00 !important
+		
+		span.error
+			font-size: 12px
+			position: absolute
+			bottom: -14px
+			left: 0
+			width: 100%
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------------
+
+.header
+	background: linear-gradient(96.18deg, #3F2835 -27.11%, #000000 100.89%)
+	
+	&__block
+		+resp(height, (xs: 44px, sm: 50px, md: 70px, lg: 80px, xl: 90px))
+	
+	
+	&__logo
+		+resp(height, (xs: 34px, sm: 40px, md: 55px, lg: 50px, xl: 70px))
+		width: auto
+	
+	&__nav
+		+resp(word-spacing, (lg: 12px, xl: 18px, 1600px: 16px))
+		+resp(margin-right, (lg: 16px, xl: 20px, 1600px: 30px))
+		
+		li
+			display: inline-block
+			
+			a, span
+				word-spacing: normal
+				color: #fff
+				+resp(font-size, (md: 13px, lg: 13px, xl: 14px, 1600px: 16px), (line-height: 0))
+			
+			&:hover
+				a
+					color: #AB2D77
+					transition: color 0.16s
+			&:active
+				a
+					color: #cc2285
+					transition: color 0s
+				
+			&.active
+				span
+					color: #cc2285
+	
+	
+	&__contacts
+		text-align: right
+		
+		p
+			position: relative
+			display: inline-flex
+			align-items: center
+			margin-bottom: 8px
+			+resp(padding-left, (sm: 20px, md: 20px, lg: 22px, xl: 26px))
+			+resp(margin-right, (lg: 0, 1600px: 18px))
+			
+			i
+				position: absolute
+				left: 0
+				margin-top: 2px
+				color: #fff
+				+resp(font-size, (sm: 14px, md: 15px, lg: 16px, xl: 20px), (line-height: 0))
+			
+			a
+				display: block
+				color: #fff
+				+resp(font-size, (sm: 14px, md: 14px, lg: 15px, xl: 16px), (line-height: 0))
+				+font($fontFamily, bold)
+				
+	
+
+		button
+			+resp(display, (md: flex, 1600px: inline-flex))
+			+resp(font-size, (xs: 18px, sm: 14px, md: 14px, lg: 14px, xl: 15px), (line-height: 0))
+			+resp(height, (xs: 24px, sm: 24px, md: 24px, lg: 26px, xl: 34px, 1600px: 40px))
+			+resp(padding-left, (lg: 12px, xl: 14px, 1600px: 18px), (padding-right: 0))
+		
+			
+
+	
+	
+	
+.navmobile
+	position: relative
+	background: none
+	border: none
+	padding: 0
+	margin: 0
+	+resp(width, (xs: 25px, sm: 27px, md: 34px, lg: 24px, xl: 24px), (height: -7))
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: flex-end
+	cursor: pointer
+	z-index: 99
+	
+	&:hover > div
+		background-color: #eccbde
+	
+	> div
+		background-color: #fff
+		+resp(height, (xs: 2px, sm: 2px, md: 3px))
+		
+		&:nth-child(1)
+			width: 100%
+		
+		&:nth-child(2)
+			width: 70%
+		
+		&:nth-child(3)
+			width: 100%
+			
+	
+
+	
+.mobilenav
+	padding: 50px 15px
+	
+	&__contacts
+		p
+			position: relative
+			display: inline-flex
+			align-items: center
+			margin-bottom: 15px
+			padding-left: 22px
+			
+			i
+				position: absolute
+				left: 0
+				margin-top: 1px
+				font-size: 22px
+			
+			a
+				display: block
+				font-size: 18px
+				+font($fontFamily, black)
+		
+		button
+			background-color: #cc2285
+			color: #fff
+			height: 34px
+			padding-left: 20px
+			padding-right: 20px
+			+font($fontFamily, bold)
+			
+			&:active
+				background-color: #ab2d77
+				transition: color 0s
+		
+	
+		
+	&__nav
+		margin-top: 20px
+		
+		li
+			a, span
+				font-size: 16px
+				color: #000
+				+font($fontFamily, bold)
+			
+			&:hover
+				a
+					color: #AB2D77
+					transition: color 0.16s
+			&:active
+				a
+					color: #cc2285
+					transition: color 0s
+			
+			+ li
+				margin-top: 15px
+
+	
+	
+	
+.footer
+	background-color: #000
+	+resp(padding-top, (xs: 30px, sm: 40px, md: 50px, lg: 60px, xl: 90px), (padding-bottom: 0))
+	
+	&__block
+		
+	&__nav
+		+resp(margin-bottom, (xs: 30px, sm: 30px, md: 30px, lg: 30px, xl: 30px))
+		+resp(padding-left, (xs-down: calc(50vw - 120px)))
+		
+		li
+			a, span
+				+resp(font-size, (xs: 16px, sm: 16px, md: 16px, lg: 18px, xl: 18px), (line-height: 0))
+				color: #fff
+			
+			&:hover
+				a
+					color: #AB2D77
+					transition: color 0.16s
+			
+			&:active
+				a
+					color: #cc2285
+					transition: color 0s
+			
+			&.active
+				cursor: default
+				
+				span
+					color: #AB2D77
+				
+			
+			+ li
+				+resp(margin-top, (xs: 10px, sm: 20px, md: 20px, lg: 20px, xl: 20px))
+	
+	
+	&__soc
+		word-spacing: 20px
+		margin-top: 40px
+		+resp(padding-left, (xs-down: calc(50vw - 120px)))
+		
+		li
+			display: inline-block
+			vertical-align: bottom
+			
+			a
+				display: flex
+				align-items: center
+				justify-content: center
+				+resp(width, (xs: 36px, md: 38px, lg: 40px), (height: 0))
+				border-radius: 50%
+				background:
+					color: #fff	
+					repeat: no-repeat
+					size: 70%
+					position: center center
+				
+				
+				&:hover
+					background-color: #AB2D77
+					transition: background-color 0.16s
+				
+				&:active
+					background-color: #cc2285
+					transition: background-color 0s
+			
+				i
+					color: #000
+					font-size: 20px
+				
+				
+		
+		
+			
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.breadcrumbs
+	&__block
+		+resp(margin-top, (xs: 15px, sm: 20px, md: 30px, lg: 40px, xl: 50px))
+	
+	&__item
+		display: inline-block
+		margin-right: 10px
+		color: #777575
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 16px), (line-height: 0))
+		
+		&:hover:not(span)
+			color: #AB2D77
+		
+	&__item + &__item
+		&::before
+			content: ''
+			display: inline-block
+			margin-right: 10px
+			width: 1px
+			height: 10px
+			background-color: #000
+			opacity: 0.1
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.discountsbanner
+	+resp(padding-top, (xs: 15px, sm: 20px, md: 30px, lg: 40px, xl: 50px), (padding-bottom: 0))
+	
+	h2
+		+resp(font-size, (xs: 20px, sm: 28px, md: 36px, lg: 40px, xl: 48px), (line-height: 0))
+		text-transform: uppercase
+		text-align: center
+		
+		span
+			+font($fontFamily, black)
+			letter-spacing: 0.1em
+			
+			&.percent
+				color: #ab2d77
+
+	
+
+	
+	
+	
+	
+	
+	
+		
+.slider
+	position: relative
+	
+	&__block
+		position: relative
+		
+	&__arrows
+		position: absolute
+		width: 100%
+		display: flex
+		+resp(justify-content, (xs: center, sm: space-between))
+		//+resp(top, (xs: 300px, sm: 320px, md: 400px, lg: 400px, xl: 450px))
+		+resp(top, (sm: calc(175px - 20px), md: calc(200px - 20px), lg: calc(200px - 20px), xl: calc(225px - 20px)))
+		pointer-events: none
+		cursor: pointer
+	
+	&__arrow
+		position: relative
+		+resp(color, (xs: #000, sm: #fff))
+		font-size: 40px
+		+resp(margin-left, (xs-down: 15px), (margin-right: 0))
+		pointer-events: none
+		opacity: 0
+		
+		&.visible
+			opacity: 1
+			pointer-events: auto
+		
+		&:hover
+			color: #ab2d77
+			transition: color 0.16s
+	
+		&:active
+			color: #cc2285
+			transition: color 0s
+		
+		&_left
+			+resp(left, (sm: 20px, md: 30px, lg: 34px, xl: 40px))
+		
+		&_right
+			+resp(right, (sm: 20px, md: 30px, lg: 34px, xl: 40px))
+
+	
+	
+	
+	
+	
+	
+	
+	
+.poster
+	position: relative
+	+resp(margin-bottom, (xs: 20vw, sm: 12vw, md: 55px, lg: 65px, xl: 75px))
+	+resp(padding-top, (sm-down: 20px))
+	+resp(height, (xs: 300px, sm: 350px, md: 400px, lg: 400px, xl: 450px))
+	background:
+		repeat: no-repeat
+		size: cover
+		position: center center
+	
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		//background: rgba(#0f0, 0.5)
+		z-index: 0
+		//linear-gradient(96.18deg, #f00 -27.11%, #0f0 100.89%)
+		//linear-gradient(96.18deg, #3F2835 -27.11%, #000000 100.89%)
+	
+	&__product
+		display: flex
+		+resp(justify-content, (xs: center, lg: flex-end))
+		position: absolute
+		width: 100%
+		height: auto
+		+resp(padding-right, (lg: 7vw, xl: 10vw))
+		+resp(bottom, (xs: -12vw, sm: -10vw, 700px: -8vw, 800px: -7vw, md: -50px, lg: -60px, xl: -70px))
+		left: 0
+		
+		img
+			+resp(max-width, (xs: 90%, sm: 80%, 700px: 70%, 800px: 60%, md: 600px, lg: 750px, xl: 900px))
+			height: auto
+			align-self: center
+	
+	
+	&__caption
+		position: relative
+		+resp(width, (xs: 90%, sm: 80%, lg: 30%, xl: 30%))
+		+resp(margin-left, (xs: 5%, sm: 10%, lg: 7vw, xl: 10vw))
+		+resp(top, (xs: 15px, sm: 20px, md: 20px, lg: 26%, xl: 30%))
+		z-index: 1
+		
+	&__descroption
+		font-weight: 300
+		+resp(font-size, (xs: 15px, sm: 16px, md: 18px, lg: 18px, xl: 18px), (line-height: 0))
+		+resp(text-align, (sm-down: center))
+		color: #fff
+		opacity: 0.6
+		+resp(margin-bottom, (xs: 15px, sm: 15px, md: 20px, lg: 26px, xl: 32px))
+	
+	&__prices
+		display: flex
+		+resp(justify-content, (sm-down: center))
+		align-items: center
+		+resp(margin-bottom, (xs: 25px, sm: 25px, md: 24px, lg: 40px, xl: 60px))
+		
+	&__price
+		white-space: nowrap
+		
+		span
+			font-size: 0.8em
+			color: inherit
+			font-weight: 700
+		
+		&_new
+			+resp(font-size, (xs: 30px, sm: 36px, md: 42px, lg: 48px, xl: 48px), (line-height: 0))
+			+font($fontFamily, black)
+			color: #fff
+		
+		&_old
+			position: relative
+			+resp(font-size, (xs: 18px, sm: 22px, md: 22px, lg: 24px, xl: 24px), (line-height: 0))
+			+font($fontFamily, black)
+			color: #fff
+			opacity: 0.6
+			+resp(margin-top, (xs: 2px, sm: 4px, md: 6px, lg: 10px, xl: 10px))
+			margin-left: 30px
+			text-decoration: line-through
+
+	
+	&__link
+		+resp(text-align, (sm-down: center))
+		
+		
+	&__button
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		+resp(width, (sm-down: 230px))
+		+resp(padding-left, (xs: 30px, sm: 36px, md: 30px, lg: 46px, xl: 50px), (padding-right: 0))
+		+resp(height, (xs: 40px, sm: 40px, md: 40px, lg: 44px, xl: 50px))
+		+resp(font-size, (xs: 16px, sm: 16px, md: 18px, lg: 18px, xl: 18px), (line-height: 0))
+	
+	
+	
+	
+	
+	
+	
+	
+.categoriestabs
+	&__block
+		margin-top: -10px
+	
+	&__item
+		position: relative
+		display: block
+		+resp(height, (xs: 50vw, sm: 200px, md: 240px, lg: 320px, xl: 350px))
+		width: 100%
+		cursor: pointer
+		background:
+			repeat: no-repeat
+			position: bottom center
+		+resp(background-size, (xs-only: cover, sm: auto 100%))
+		//+resp(margin-bottom, (sm-down: 40px))
+		transition: background 0.3s ease-out
+		
+		&:hover
+			+resp(background-size, (xs-only: cover, sm: auto 105%))
+			
+			.categoriestabs__label
+				+resp(background-size, (xs-only: cover, sm: auto 105%))
+			
+			.categoriestabs__moblabel span
+				color: #ab2d77
+				
+				
+	
+	&__label
+		//+resp(display, (sm-down: none))
+		position: relative
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		mix-blend-mode: lighten
+		background:
+			repeat: no-repeat
+			position: bottom center
+		+resp(background-size, (xs-only: cover, sm: auto 100%))
+		transition: background 0.3s ease-out
+		
+		span
+			display: flex
+			align-items: center
+			+resp(padding-left, (xs: 10px, sm: 20px, md: 20px, lg: 26px, xl: 30px), (padding-right: 0))
+			color: #000
+			background-color: #fff
+			+resp(font-size, (xs: 16px, sm: 18px, md: 20px, lg: 22px, xl: 24px), (line-height: 0))
+			+font($fontFamily, bold)
+			text-transform: uppercase
+	
+	
+	&__sublabel
+		background-color: rgba(#000, 0.5)
+		//+resp(display, (sm-down: none))
+	
+	&__sublabel, &__label span
+		position: absolute
+		left: 0
+		+resp(bottom, (xs: 20px, sm: 24px, md: 24px, lg: 34px, xl: 40px))
+		+resp(min-width, (xs: 240px, sm: 90%, md: 70%, lg: 280px, xl: 300px))
+		+resp(height, (xs: 30px, md: 34px, lg: 40px, xl: 50px))
+	
+	
+	//&__moblabel
+	//	position: absolute
+	//	bottom: -30px
+	//	left: 0
+	//	height: 30px
+	//	display: flex
+	//	align-items: center
+	//	
+	//	span
+	//		color: #000
+	//		background-color: #fff
+	//		font-size: 16px
+	//		+font($fontFamily, bold)
+	//		text-transform: uppercase
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	
+.discountsbgbanner
+	+resp(overflow-x, (xs-down: hidden))
+	+resp(padding-top, (xs: 60px), (padding-bottom: 0))
+	
+	.container
+		+resp(width, (xs-down: 100%))
+		+resp(padding-left, (xs-down: 0px), (padding-right: 0))
+		
+	&__block
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		+resp(padding-top, (xs-only: 100px, sm-only: 100px))
+		+resp(padding-bottom, (sm-down: 10px))
+		+resp(height, (xs: 270px, sm: 260px, md: 220px, lg: 250px, xl: 300px))
+		background:
+			repeat: no-repeat
+			size: cover
+			position: center center	
+	
+	&__image
+		position: absolute
+		
+		&_left
+			+resp(width, (xs: 180px, sm: 220px, md: 240px, lg: 300px, xl: 340px))
+			+resp(left, (xs: -30px, sm: -20px, md: -30px, lg: -22px, xl: -22px))
+			+resp(top, (xs: -30px, sm: -30px, md: -30px, lg: -5px, xl: -5px))
+			
+		&_right
+			+resp(width, (xs: 140px, sm: 170px, md: 170px, lg: 200px, xl: 220px))
+			+resp(right, (xs: -20px, sm: -10px, md: 20px, lg: 100px, xl: 130px))
+			+resp(top, (xs: -15px, sm: -20px, md: 20px, lg: 20px, xl: 20px))
+	
+	&__caption
+		//border: 1px solid #777
+		text-align: center
+		+resp(height, (xs: 75%, sm: 85%, md: 70%, lg: 65%))
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		//align-content: space-between
+		width: auto
+	
+	&__top
+		display: flex
+		align-items: center
+		
+		> div
+			+resp(padding-left, (xs: 10px, md: 15px, lg: 15px, xl: 15px), (padding-right: 0))
+		
+		&_percent
+			color: #ab2d77
+			+resp(font-size, (xs: 48px, sm: 75px, md: 80px, lg: 90px, xl: 96px), (line-height: 0))
+			+font($fontFamily, black)
+			white-space: nowrap
+			
+			
+		&_large
+			+resp(font-size, (xs: 30px, sm: 40px, md: 40px, lg: 46px, xl: 48px), (line-height: 0))
+			color: #fff
+			+font($fontFamily, bold)
+			text-transform: uppercase
+			
+		&_small
+			+resp(font-size, (xs: 15px, sm: 20px, md: 20px, lg: 22px, xl: 24px), (line-height: 0))
+			color: #fff
+			+font($fontFamily, bold)
+			text-transform: uppercase
+			white-space: nowrap	
+			+resp(margin-top, (xs: 5px, sm: 10px, md: 10px, lg: 10px, xl: 10px))
+	
+	
+	&__button
+		button
+			+resp(height, (xs-only: 40px))
+			+resp(width, (xs-only: 230px))
+		
+		
+		
+
+	
+	
+	
+	
+	
+	
+
+
+.discountsimplebanner
+	+resp(overflow-x, (xs-down: hidden))
+	
+	.container
+		+resp(width, (xs-down: 100%))
+		+resp(padding-left, (xs-down: 0px), (padding-right: 0))
+	
+	&__block
+		+resp(display, (md: flex))
+		align-items: center
+		position: relative
+		+resp(height, (md: 220px, lg: 250px, xl: 290px))
+		+resp(padding-top, (sm-down: 20px))
+		background: linear-gradient(66deg, rgba(27,1,14,1) 0%, rgba(91,32,67,1) 17%, rgba(2,0,1,1) 50%, rgba(2,0,1,1) 82%, rgba(91,32,67,1) 100%)
+	
+	&__caption
+		display: flex
+		+resp(flex-direction, (sm-down: column))
+		align-items: center
+		+resp(justify-content, (sm-down: center))
+		+resp(padding-left, (xs: 15px, md: 40px, lg: 80px, xl: 100px))
+		+resp(padding-right, (sm-down: 15px))
+		+resp(width, (xs: 100%, md: 67%, lg: 70%, xl: 60%))
+		+resp(margin-bottom, (xs-only: 20px, sm-only: 30px))
+	
+	&__percent
+		color: #fff
+		+font($fontFamily, bold)
+		+resp(margin-bottom, (md-down: 10px))
+		+resp(font-size, (xs: 50px, sm: 60px, md: 70px, lg: 86px, xl: 96px), (line-height: 0))
+		
+	
+	&__text
+		color: #fff
+		+font($fontFamily, bold)
+		+resp(text-align, (sm-down: center))
+		text-transform: uppercase
+		+resp(margin-left, (md: 30px, lg: 70px, xl: 100px))
+		+resp(font-size, (xs: 22px, sm: 28px, md: 34px, lg: 40px, xl: 48px), (line-height: 0))
+		
+	
+	&__image
+		+resp(position, (xs: relative, md: absolute))
+		bottom: 0
+		+resp(right, (md: 0, lg: 40px, xl: 130px))
+		+resp(height, (xs: 200px, sm: 260px, md: calc(100% - 15px)))
+		+resp(width, (xs: 260px, sm: 260px, md: 300px, lg: 370px, xl: 400px))
+		margin: 0 auto
+		background:
+			repeat: no-repeat
+			size: contain
+			position: center bottom
+	
+	
+	
+	
+	
+	
+	
+	
+			
+	
+	
+	
+	
+	
+	
+.bgbanner
+	&__block
+		+resp(padding-top, (xs: 30px, sm: 60px, md: 70px, lg: 80px, xl: 100px), (padding-bottom: 0))
+		+resp(padding-left, (xs: 15px, sm: 10px, md: 10px, lg: 10px, xl: 10px), (padding-right: 0))
+		text-align: center
+		
+		background:
+			repeat: no-repeat
+			size: cover
+			position: center center
+			
+	&__title
+		+resp(font-size, (xs: 22px, sm: 34px, md: 40px, lg: 42px, xl: 48px), (line-height: 4))
+		text-transform: uppercase
+		color: #fff
+		+font($fontFamily, bold)
+		letter-spacing: 0.1em
+		
+	&__text
+		+resp(font-size, (xs: 18px, sm: 20px, md: 22px, lg: 22px, xl: 24px), (line-height: 0))
+		//+resp(line-height, (xs: 19px, sm: 40px, md: 40px, lg: 40px, xl: 40px))
+		+font($fontFamily, light)
+		white-space: pre-wrap
+		color: #fff
+		
+		+ .bgbanner__text
+			+resp(margin-top, (xs: 15px, sm: 25px, md: 22px, lg: 26px, xl: 24px))
+	
+	
+	&__button
+		+resp(height, (xs: 36px, sm: 38px, md: 40px, lg: 45px, xl: 50px))
+		+resp(padding-left, (xs: 10px, sm: 30px, md: 30px, lg: 30px, xl: 30px), (padding-right: 0))
+		+resp(min-width, (xs: 90%, sm: 280px, md: 290px, lg: 300px))
+		font-size: 18px
+		text-transform: uppercase
+	
+	&__title, &__textblock
+		+resp(margin-bottom, (xs: 30px, sm: 40px, md: 40px, lg: 45px, xl: 50px))
+		
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+.catalog
+	&__leftblock
+		+resp(width, (md: 250px, lg: 300px, xl: 432px))
+	
+	&__wait
+		position: absolute
+		top: 0
+		left: 0
+		display: flex
+		justify-content: center
+		align-items: flex-start
+		width: 100%
+		height: 100%
+		background-color: rgba(#fff, 0.9)
+		opacity: 0
+		pointer-events: none
+		z-index: 1
+		transition: opacity 0.3s 0.1s
+		
+		i
+			position: relative
+			font-size: 50px
+			top: 250px
+		
+		&.visible
+			opacity: 1
+			pointer-events: auto
+	
+	
+	&__pagination
+		margin-top: 30px
+		text-align: center
+				
+
+	
+#catalogItems
+	position: relative
+	
+	
+	
+
+		
+.pagination	
+	display: inline-flex
+	align-items: center
+	
+	&__item
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		width: 30px
+		height: 30px
+		cursor: pointer
+		font-size: 16px
+		border: 1px solid transparent
+		transition: border-color 0.16s, fill 0.16s
+		
+		span
+		
+		svg
+			width: 30px
+			height: 30px
+		
+		&:hover:not(.pagination__item_active)
+			border: 1px solid #ccc
+		
+		
+		&_active
+			background-color: #ab2d77
+			color: #fff
+			cursor: default
+	
+	&__arrow
+		cursor: pointer
+		display: flex
+		align-items: center
+		justify-content: center
+		
+		&[disabled]
+			pointer-events: none
+			
+			svg
+				fill: #aaa
+		
+		svg
+			width: 30px
+			height: 30px
+			transition: fill 0.16s
+		
+		&:hover
+			svg
+				fill: #ab2d77
+		
+		&_left
+			margin-right: 20px
+		
+		&_right
+			margin-left: 20px
+		
+			
+		
+		
+		
+	
+	
+	
+	
+	
+	
+		
+	
+
+.leftblock
+	+resp(background-color, (sm-down: #fff))
+	+resp(box-shadow, (sm-down: 0 6px 10px -2px rgba(#000, 0.2)))
+	+resp(margin-bottom, (xs-only: 20px, sm-only: 30px))
+	
+	&__top
+		+resp(display, (xs: flex, md: none))
+		+resp(align-items, (sm-down: center))
+		+resp(justify-content, (sm-down: space-between))
+		height: 42px
+		+resp(padding-left, (xs: 15px, sm: 20px), (padding-right: 0))
+		
+		&.opened ~ [toggleleftcontent]
+			display: block
+	
+	&__title
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		font-size: 18px
+	
+	&__arrow
+		position: relative
+		display: block
+		width: 22px
+		height: 26px
+		font: normal normal normal 14px/1 FontAwesome
+		font-size: 36px
+		line-height: 26px
+		
+		&:hover
+			color: #ab2d77
+		
+		&::after
+			position: absolute
+			top: 0
+			left: 0
+			
+		&_down
+			&::after
+				content: '\f107'
+		
+		&_up
+			&::after
+				content: '\f106' 
+		
+	
+	
+	&__content
+		+resp(display, (sm-down: none))
+		+resp(border-top, (sm-down: 1px solid #e7e7e7))
+		+resp(padding-left, (sm-down: 20px), (padding-right: 0))
+		+resp(padding-top, (sm-down: 10px), (padding-bottom: 0))
+	
+	
+
+	
+.leftitem
+	+resp(width, (md: 200px, lg: 200px, xl: 270px))
+	
+	+ .leftitem
+		+resp(margin-top, (xs: 40px, sm: 40px, md: 30px, lg: 40px, xl: 50px))
+	
+	&__top
+		display: flex
+		align-items: center
+		justify-content: space-between
+		cursor: pointer
+		
+		&:hover
+			.leftitem__title, .leftitem__arrow
+				color: #ab2d77
+		
+		&.opened
+			~ [leftitemcontent]
+				display: block
+			
+			.leftitem__title
+				//color: #ab2d77
+			
+	
+	&__title
+		+resp(font-size, (xs: 16px, sm: 16px, md: 16px, lg: 18px, xl: 18px), (line-height: 0))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		
+	
+	&__arrow
+		position: relative
+		display: block
+		width: 12px
+		height: 12px
+		//background-color: #eee
+		font: normal normal normal 14px/1 FontAwesome
+		font-size: 12px
+		+resp(display, (sm-down: none))
+		
+		&:hover
+			color: #ab2d77
+		
+		&::after
+			position: absolute
+			top: 0
+			left: 0
+			
+		&_down
+			&::after
+				content: '\f078'
+			
+		&_up
+			color: #ab2d77
+			
+			&::after
+				content: '\f077'
+		
+	
+	&__content
+		+resp(display, (xs: block, md: none))
+		padding-right: 20px
+		+resp(margin-top, (xs: 15px, md: 20px))
+			
+		
+
+	
+	
+	
+	
+
+	
+.opsblock
+	word-spacing: 3px
+	+resp(width, (sm-down: calc(100% + 12px)))
+	+resp(margin-left, (sm-down: -6px))
+	
+	//&_carditem
+	//	.opsblock__item
+	//		+resp(border, (sm-down: 1px solid #eee))
+	//		+resp(width, (sm-down: 30px), (height: 0))
+	
+	&__item
+		display: inline-block
+		+resp(width, (xs: 38px, md: 26px, lg: 28px, xl: 30px), (height: 0))
+		+resp(border, (xs: 6px solid #fff, md: 2px solid transparent))
+		background-clip: content-box
+		cursor: pointer
+		margin-bottom: 3px
+		//box-shadow: 0 0 0 2px transparent
+		transition: box-shadow 0.16s
+		
+		&:hover:not(.opsblock__item_active)
+			box-shadow: 0 0 0 1px rgba(#ab2d77, 0.7)
+		
+		&_active, &:active
+			box-shadow: 0 0 0 2px #ab2d77
+			transition: box-shadow 0s
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.hashtagsblock
+	word-spacing: 3px
+	margin-top: -8px
+	
+	&__item
+		margin-top: 8px
+		display: inline-flex
+		align-items: center
+		border: 1px solid
+		+resp(border-color, (xs: #222, md: #ccc))
+		+resp(color, (xs: #222, md: #6b6b6b))
+		word-spacing: normal
+		height: 30px
+		padding: 0 10px
+		font-size: 14px
+		cursor: default
+		+font($fontFamily, regular)
+		transition: border-color 0.16s, color 0.16s
+		
+		&[hashtag]:hover
+			border-color: #ab2d77
+			color: #ab2d77
+			cursor: pointer
+		
+		&[hashtag].hashtagsblock__item_active
+			background-color: #ab2d77
+			border-color: #ab2d77
+			color: #fff
+			
+	
+	
+
+	
+	
+.iconsblock
+	word-spacing: 5px	
+	
+	&__item
+		display: inline-block
+		width: 42px
+		height: 42px
+		padding: 1px
+		background-origin: content-box
+		border: 3px solid #fff
+		box-shadow: 0 0 0 1px #ccc
+		margin-top: 10px
+		transition: border-color 0.16s, box-shadow 0.16s
+		background:		
+			repeat: no-repeat
+			size: contain
+			position: center center
+	
+	
+		&:not(.iconsblock__item_card):hover
+			box-shadow: 0 0 0 1px #ab2d77
+			cursor: pointer
+			
+		&_active
+			border-color: #ab2d77
+			box-shadow: 0 0 0 1px #ab2d77
+			transition: border-color 0s
+		
+		
+		&_card
+			border: 1px solid #ccc
+			padding: 2px
+			background-origin: content-box
+			box-shadow: none
+			width: 60px
+			height: 60px
+			
+	
+	
+	
+
+
+				
+	
+	
+	
+	
+	
+	
+	
+	
+
+.attributesblock
+	list-style: none
+	
+	&__item
+		+resp(font-size, (xs: 13px, sm: 13px, md: 14px, lg: 14px, xl: 16px), (line-height: 2))
+		
+		+ li
+			+resp(margin-top, (xs: 8px, sm: 8px, md: 10px, lg: 10px, xl: 10px))
+		
+		span
+			color: #777575
+			max-width: 50%
+			display: inline
+			+resp(line-height, (xs: 13px, sm: 13px, md: 14px, lg: 14px, xl: 16px))
+			
+			&::after
+				content: ':'
+		
+		strong
+			max-width: 50%
+			display: inline
+			color: #000
+			+font($fontFamily, regular)
+			+resp(line-height, (xs: 13px, sm: 13px, md: 14px, lg: 14px, xl: 16px))
+
+	
+	
+	
+	
+	
+	
+	
+.categories
+	&__item + &__item
+		+resp(margin-top, (xs: 6px, sm: 10px, md: 20px))
+	
+	&__item
+		&_active
+			span
+				color: #ab2d77
+		
+		&:hover
+			a
+				color: #ab2d77
+			
+		&:active
+			a
+				color: #cc2285
+				transition: color 0s
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.card
+	+resp(margin-bottom, (xs: 40px, sm: 40px, md: 30px, lg: 30px, xl: 40px))
+	
+	&:hover &__image:not(.card__image_nofile)
+		filter: brightness(115%)
+	
+	&__image
+		object-fit: cover
+		+resp(height, (xs: 60vw, sm: 180px, md: 190px, lg: 220px, xl: 250px))
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+		position: relative
+		transition: filter 0.16s
+		background:
+			color: #f9f9f9
+			repeat: no-repeat
+			size: cover
+			position: center center
+		
+	
+	&__caption
+		+resp(margin-top, (xs: 10px, sm: 15px, md: 20px, lg: 25px, xl: 30px))
+		display: flex
+		flex-direction: column
+		
+	&__top
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+		
+	&__title
+		+resp(font-size, (xs: 16px, sm: 16px, md: 18px), (line-height: 0))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		
+	&__price
+		+resp(font-size, (xs: 16px, sm: 16px, md: 18px), (line-height: 0))
+		text-transform: uppercase
+		color: #ab2d77
+		+font($fontFamily, bold)
+		white-space: nowrap
+		
+		small
+			color: #ab2d77
+			+font($fontFamily, bold)
+		
+	&__description
+		+resp(font-size, (xs: 14px, sm: 14px, md: 14px, lg: 16px, xl: 16px))
+		+resp(line-height, (xs: 18px, sm: 18px, md: 20px, lg: 22px, xl: 24px))
+		color: #777575
+		
+	&__attributes		
+		li
+			+resp(font-size, (xs: 12px, sm: 13px, md: 13px, lg: 14px, xl: 14px), (line-height: 2))
+			
+			+ li
+				+resp(margin-top, (xs: 8px, sm: 8px, md: 10px, lg: 10px, xl: 10px))
+			
+			span
+				color: #777575
+				max-width: 50%
+				display: inline
+				+resp(line-height, (xs: 13px, sm: 13px, md: 14px, lg: 14px, xl: 16px))
+			
+			strong
+				max-width: 50%
+				display: inline
+				color: #000
+				+font($fontFamily, regular)
+				+resp(line-height, (xs: 13px, sm: 13px, md: 14px, lg: 14px, xl: 16px))
+			
+		
+	&__hashtags
+		margin-top: auto
+		word-spacing: 3px
+		
+		p
+			margin-top: 8px
+			display: inline-flex
+			align-items: center
+			border: 1px solid #ccc
+			color: #6b6b6b
+			word-spacing: normal
+			padding: 0 10px
+			height: 30px
+			font-size: 14px
+			transition: border-color 0.16s, color 0.16s
+			+font($fontFamily, regular)
+			cursor: defaultcatalog
+			
+			&:hover
+				//background-color: #ab2d77
+				//border-color: #ab2d77
+				//color: #ab2d77
+				
+		
+	&__link
+		display: flex
+		margin-top: auto
+		align-items: center
+		
+		&:hover
+			span
+				color: #ab2d77
+			
+			svg
+				fill: #ab2d77
+		
+		span
+			+resp(font-size, (xs: 14px, lg: 16px, xl: 16px), (line-height: 0))
+			text-transform: uppercase
+			+resp(margin-right, (xs: 8px, lg: 15px))
+			transition: color 0.16s
+		
+		svg
+			+resp(width, (xs: 20px, lg: 24px, xl: 24px), (height: 0))
+			transition: fill 0.16s
+			
+	
+	&__hashtags ~ .card__link
+		margin-top: 0
+	
+	&__top, &__hashtags, &__attributes, &__description
+		+resp(margin-bottom, (xs: 10px, sm: 10px, md: 15px, lg: 20px))
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+.carditem
+	
+	&__block
+		~ .carditem__products
+			+resp(margin-top, (xs: 60px, sm: 70px, md: 80px, lg: 90px, xl: 100px))
+	
+	&_space
+		+resp(margin-top, (xs: 20px, sm: 26px, md: 30px, lg: 34px, xl: 40px))
+	
+	&__products
+		[class^="col-"]:nth-child(4)
+			+resp(display, (md-only: none))
+		
+	&__images
+		+resp(padding-right, (md: 20px, lg: 30px, xl: 50px))
+		+resp(margin-bottom, (xs: 30px, sm: 30px, md: 30px, lg: 30px, xl: 30px))
+		
+	&__caption
+		z-index: 10
+		position: sticky
+			
+	
+	&__title
+		+resp(font-size, (xs: 22px, sm: 22px, md: 24px, lg: 28px, xl: 42px), (line-height: 0))
+		text-transform: uppercase
+		+resp(margin-top, (md: -3px, lg: -5px, xl: -6px))
+		+font($fontFamily, black)
+	
+	
+	&__categories
+		margin-top: 10px
+		word-spacing: 5px
+		
+	&__category
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 16px), (line-height: 0))
+		+font($fontFamily, regular)
+		color: #777575
+	
+	
+	&__priceblock
+	
+	&__price
+		display: inline-block
+		+resp(font-size, (xs: 26px, sm: 26px, md: 26px, lg: 30px, xl: 40px), (line-height: 0))
+		+font($fontFamily, black)
+		vertical-align: baseline
+		color: #ab2d77
+		
+		small
+			font: inherit
+			font-size: 0.8em
+			color: inherit
+		
+		
+	&__priceold
+		display: inline-block
+		+resp(font-size, (xs: 16px, sm: 18px, md: 18px, lg: 22px, xl: 24px), (line-height: 0))
+		+font($fontFamily, black)
+		+resp(margin-left, (xs: 10px, sm: 10px, md: 20px, lg: 30px, xl: 40px))
+		vertical-align: baseline
+		color: #777
+		text-decoration: line-through
+		
+		small
+			font: inherit
+			font-size: 0.8em
+			color: inherit
+	
+	&__pricecaption
+		display: block
+		margin-top: 10px
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 16px), (line-height: 0))
+		+font($fontFamily, regular)
+		color: #777575
+	
+	
+	
+	&__rating
+		+resp(margin-top, (xs: 20px, sm: 26px, md: 30px, lg: 34px, xl: 40px))
+		display: flex
+		+resp(flex-direction, (xs: column, sm: row))
+		+resp(align-items, (sm: center))
+	
+	
+	&__ratinglink
+		font-size: 16px
+		+resp(margin-left, (sm: 10px))
+		+resp(margin-top, (xs-down: 5px))
+		position: relative
+		+resp(top, (sm: -2px))
+		color: #1d9ffb
+		cursor: pointer
+		
+		&:hover
+			text-decoration: underline
+	
+	
+	
+	
+	&__captiontitle
+		margin-bottom: 10px
+		+font($fontFamily, bold)
+		+resp(font-size, (xs: 18px, sm: 18px, md: 18px, lg: 18px, xl: 18px), (line-height: 0))
+		
+	
+	&__opsblock
+		word-spacing: 3px
+		//+resp(width, (sm-down: calc(100% + 12px)))
+		+resp(margin-left, (sm-down: 0))
+	
+	&__hashtagsblock
+		
+	&__iconsblock
+	
+	&__attributeslock
+		
+	
+	&__desc
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 16px))
+		
+		&_bordered
+			margin-top: 20px
+			position: relative
+			
+			&::before
+				content: ''
+				position: absolute
+				top: -10px
+				display: block
+				width: 100%
+				height: 1px
+				background-color: #aaa
+				
+	
+	&__buttons
+		+resp(word-spacing, (xs: 10px, sm: 30px, md: 30px, lg: 30px, xl: 30px))
+		+resp(display, (sm-down: flex))
+		+resp(justify-content, (sm-down: space-between))
+		
+		.button
+			vertical-align: top
+			font-size: 16px
+			+font($fontFamily, medium)
+			
+			&_white
+				width: 100%
+			
+			&_black
+				width: 100%
+			
+			&_smalltext
+				width: 100%
+				+resp(font-size, (xs: 14px, sm: 14px, md: 14px, lg: 14px, xl: 14px), (line-height: 2))
+				+resp(padding-left, (xs: 10px, sm: 10px, md: 10px, lg: 12px, xl: 15px), (padding-right: 0))
+				+font($fontFamily, regular)
+	
+	
+	&__sizes
+		img
+			width: 100%
+	
+	
+	&__simular
+
+	
+	
+	&__reviews
+		+resp(margin-top, (xs: 60px, sm: 70px, md: 80px, lg: 90px, xl: 100px))
+
+	
+
+	
+
+
+
+
+
+	
+	
+	
+.cardimage
+	background:
+		repeat: no-repeat
+		size: cover
+		position: center center
+	
+	&[cardimagepopup]
+		&:not([diasbled])
+			+resp(cursor, (sm: pointer))
+			transition: filter 0.16s
+		
+			&:hover
+				+resp(filter, (sm: brightness(1.06)))
+			
+	
+	
+	li.slick-active
+		.cardimage_item
+			box-shadow: 0 0 0 2px #ab2d77
+			cursor: default
+	
+	&_main + &_main
+		margin-top: 30px
+		object-fit: cover
+		object-position: center
+	
+	&_main
+		+resp(height, (xs: 60vw, sm: 300px, md: 300px, lg: 400px, xl: 500px))
+		width: 100%
+		background-color: #eee
+		position: relative
+		
+		img
+			object-fit: cover
+			width: 100%
+			height: 100%
+			
+			&.hidden
+				display: none
+		
+		&_video
+			position: relative
+			text-align: center
+			cursor: pointer
+			
+			&:hover::after
+				opacity: 1
+			
+			&::after
+				content: ''
+				pointer-events: none
+				position: absolute
+				top: calc(50% - 35px)
+				left: 0
+				display: inline-block
+				width: 100%
+				height: 70px
+				opacity: 0.8
+				transition: opacity 0.16s
+				background:
+					image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOkSURBVHgB7ZyNmZpAEIY/7kkBpgNSwWkF4SrQq+C8CmIHmgpiKvCugrtUoFdBvAqgA+1gMuMuERAUxIXl532ekR9R1s/ZH4ZhHVQIEQ15IXbP5up16PUoAdte21bbp+M4W1SEA4OwEANePLFNoEQYoBwi1Ibtne2DhQrQJFgQj21N5nljm8B2uJBTNp+qx2d7gm2Q8hCf6scnGwTiQrhUTZUpyorNRR3wiWdsO7IXn6r0Hj7ZgG1JzeEXrqBQd03KPd9wHH80BRn/PBbp3nMLo0VZ43Qw1hQCtoe84uQSpgWihATIKc5FYVokSkjANmJx9ucOyiPMXzSvTbnEloUZnTvg7tybLMoS7RNFGF7qrTI9hj845cUK7WbKnvOa9kaqMLpdkSpU9mrYdqSdGaU1xllVaY72iyLIb0ytFSfC6Co0RXeQC2AvufOkKvFBPtrTNecl4Or0Lboj5jHaW1x0D4kSxC44Yx7TUW8JiY1t/nsMqRChi+4yjLY10apkOnaxYVtABbJtZR7bIhWJM8k85XwrspPDMCX0GA9m+R3dkAEV2zOvSk/wArs41JxQmDEMknUla6lAnrwceiV2nx0MjnT5xxeJ+0i1m6I+9lzcr3ekbptaMfy3xIMkpj2UqvQdlmGBQPcijAtLqVGgg8dYH4iqQSBXhGlMeKFCgYaNEiakCoEcGerBMHm762shFb+d4Ya0RRjx+h1uyB16UmmLMDetRoIIE6ChkE5pQzJcUJ7gCxoIqYCSiOHBDHvxmMpSRMsS8RAxD+bYi8cEsJwKPCTJVoT5hKXUIEjIoY2xrirVKEjIh22BKg/1CiKoQJXeqNVrKmxU87CRl1AYo7c0wsh7yn6bBAk5akEqRdUksSQdqu5Zg2twpYxOpLCm/zX5J7b6HB7s5J3bl0dZiQrjQbl0l5mwMH9kpb+pfySWCpK8uv6J7rKIbvSJQ4rziUOaZ3SPRXLHiTCs3AZ6kNMRXtJSWvt01iLprPrALjTEs6wHLjJjvvwBSZdfor0ss7LChbNXvaSucWTQ1z9kEUUn/MgQOUB7CKB+01n6B7ky6B/9yyD3DTf9hQ9o0F2FCFLm3KIIhe5E6iwDabSa1FtJWQuJUgpS8zjY/EC6lO0H6oDsTWReU11TGESh+mYBSeKzWZds2U+Tcgku5JjUpDemWZMhDzGd6eRCBb7HenmLqZik65XA+uulh8rLYFSYJKSy0OUfdnGcs2qA9Mm7hK1er3zyrn+w410jokL1kQAAAABJRU5ErkJggg==')
+					repeat: no-repeat
+					size: contain
+					position: center center
+	
+	
+	
+		&_obj
+			background-color: #fff
+			--progress-bar-color: #3f2835
+			--poster-color: #eee
+			--progress-mask: #fff
+			
+			.userInput::focus
+				outline: none !important
+		
+	
+	[showthreed]
+		position: relative
+		cursor: pointer
+		position: absolute
+		bottom: 10px
+		right: 10px
+		width: 60px
+		height: 60px
+		opacity: 0.7
+		transition: opacity 0.16s
+		background:
+			image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAABrCAYAAABNLR1qAAAgAElEQVR4nO19d3gdV5n+OzNXktV1r3pvlpss2apucizHjuM0wiaEhJYshCwEQgkLZClZYPnBwrLLsoTQa3ogNsEhIcSJWyRbVrNluatYvVldsmRJd2Z+f8x8M2fOnXt1r+NAeB5/zzPWtXRn5pzznq9/5xzgGl2ja3SNrtE1ukZ/CxL4X5Qk5/092nE1SGB+Cl5+DwAq95M+2/3+H4Ya+ls8fuf4O7TjahAPpGjzWdQv9nuAFUhF/6wwn1XuM/APCvg/ErgCrAASiJKXS+S+xxILqAJA9nLZAf8PA/Q7GVwChOVKAs2hXxKAIP1yMD8dzHcl2HOuDBNYt34tMD8XuL/Rd1nupue9I+mdBq4ddxJADuYKAhBsc4XACjYLMkt2oC4AmAMwb3MtMN91w5wY72iu9gvc+r7zDgBiacqy+UW+F9DLS1OWsbqTFbMsd7JgBkEDkK4lzBXC/CSwaVKwopm4jkAiAOf06zJ3zTHXAuzBZrmawEZ93/mAwC5NWRbI1xclfzk3BMDs1XihDmgg3ElgsUCG6leYfoUCCEtJT40pLCtOzsrNiU9KS4mJiokJi4mJDl0SuiTIERwsAoAsy+rs9KX58fGJ2cnx8ZmhvoHx9pbW4aba+r7+nv5xvZ8zzDWrXyzgNBl8cnVpyjKDqwMF+mqQv+Be1hsaMHHcSYD6y53ewAwHEB4bFxezcdvmrMLiorT8osKU5PQ0Z0RUZIggCB4uni9SVVWdnpya6+/uGTt5vLm/uaGxp+ZAVcfFwYtjAC7plzew/eJqFmggcK6+Erqqfi6J5avInRYwAUQUrStN2VC5OWdNWXFaVl5ubGx8XKS39iiyrAqiKAiCAFVVVVVRVAiCIIriouCPDo9MdbS2jR4/2tBdve9ge1NdYx+AadiDHTBXg9HVBPRbEct2fu7VBNcOUBZMCSZnEqB0hcKeOyNiYl3OTVuvy1xbVpxRWF6ckpGTHRsUFCSxL1ZkWQWgipIkAjCAFERR1IGFIiuKKIkCcbV+D0RJEuzuYWlhYUHuar8wcqK2se9YbUPX0YPVnSPDw6PwztWzsOpqAnoeVkOOBfstGWVvB7g8oKyfSRYrb80SmKy4DYcGaASA8DVlxanX3XB97sq1q1NyluXFxSXE++JOBYBAICmKokJVAwLW7h5VURSd6z3GaHR4ZKr1zNnh08dP9r35+v62prrGXphcPaP/ZMU3CzZrhZOlzvrWVwT01QTXG4fyLgprxRKgYeDErdMV49ywdUtWYUlRetGG0pSMnOw4njtpwFmxqsiyoqqA5NA41h+Q/AUWgkEeE4gl4urGw3U9J4819Rzed6BjbHTcTlfPwASadDWJcd7lsuNon3S1wOVBJQMoGJ4cyYpZi+4sLF2bUrFta+6asuK09JxsV0JSQhT7ElVVQUxD3CeIJrCyW1YAK7CKoqiSJFk4lr2HB0lVVVWRFVWUFgUWJPL5ycDT8NDFqfbzLSMnG5p6qt7Y33ai/rg3Xc2LcQKedDZxNAuyV7oa4LKRItKhIbACFwlNvEbqVziAyKiYqJhN11dmrS0rySgoWZOUtWxpfHBwsIe1frW4zwZYFQDIwFpMfBtAcyJfVVTbyWBnpM3Pz7s7zrcONzc09R+va+iq3negY3J8chzAFDSgp/RrmvkdTQAS4Wwo1CvAVwtccmGCYIrZSABRAGIAOPUrJr+oMKPyxu0r8osK0rPy8mJ57gSsFu2VAKsbQuCtYss9+nMN7pNlVVXhEyQ7I43jcvq/MRkUWVEEweRynoaHLk62njk/fKapuefAq6+dOXX8ZDeAcQBj+jUOYAIa2CTGSVT75N6rBS7pVxK/kdDAdAGI3XbLjasrbthaumrN6hUZWZkJQSEhQXYP8lNEqoIoguEknxauD5Dgg/s8J4MsW57hzfq2kQwqK77199gaZQtzc+6ejq7Bk03NZw+9tq9+/yuvnQQwol/E3cTBpIffVnBZPRsKTfxGA4i98957Sm5//3vvWL5qZZnkkCziVudO+OuGeB1wVkR6cp8qy7IqSVJAXO7tHkOa6KAt0jbjPaqqQtX/4e/xJr5lt+w+d/pM3YtPP79r95PPN0IDmDh4Flb9a0tXC1xyb0IBRN3xobuX3fGBe+5dUZh/Nz2PjCFfum8xPeYTWB8Wrrf3BMB9gbbNm/63imsv+h+AYTgCUM+eOPX87qefe2L3k8+fBzAJ08gi0WxLduDa6gYvJNhc2LR1S17uymU3g5kohpWraAaKrwHXdKG9tarfo7D3mAMueQw4ZxVz93iK7wDbpmogsaB5vgeqCr1thiqxsdghatKCBRYAhNyVy27atHULcZjtmAcCmIU4zuUfzBtT4ZHRUTEOSYzdsHXLyvWVFeuXrly+JjE5KTXaGRPNP1uRZfWtcgWrxwK8x/Y9jBi1WNI27+FVi4eLFIglTTQxNj4x2D/Q23rmXNPh/Ydqqt84eBrA6NTE5Dg0y9nOqPIIcgQqlvm4MBvoJ992CUz3Jwqa/nUmp6Ukr6+syCssLc5dU1qUmZye5rQJGSpvMYpksVaZAfdlpC16D6PLfU0gj3vA6WVFtnIskdvtlvu6useO1zV2Njcca6s5UNXS39PXD81anoAmisktomAHW0igcJcaKLh2gQq6KPpkl72hYEWEDnq4FCRFFhStTdm684al+cWFKZlLc2OdLmc4/15VVVXOdQlUXy4abGCtYMP6FgQYz7CxpHl3hyx2Gy63DWoAwNjo2KUL51tGTh9v7jvw6uutzceO98kLMuvXkutD7g+Bykau7AoHDIADBZe4lA0lUtSJT4ZTYoCdCGws2cjyJKelOEsr1mcUry/PLChem5iame6ySwQEEvf1RxTLsqz4sqTt7tH9Vg8O5UUxRcmI3G633NvZPdpU3zhwrKa2s776aHd/T98YrFkkPqnAJhPYnwQsH6eeZ+4JCFwCjRW9FHUK138XBLM+iS0kY59tF3c2uFwUxbC15SUpW3Zsy127riQtOT0txhUXG+HRSp3sXAp/rGKPSJMNSIFa3zyNjoxO93V2jTfW1PdUvb6/7XhtQ5+iKDw32sWPWd+VVYE0ngv6vRTRolAmgewGIAcKLoUVI6DpU+cdH3hv4bbbbtr68h9ePPvXPX8elhdkAWbJChsTtWs8q7eJuy1cHZ+UELNh6+asonVlGWtKi5JSMtKdDoeDTyCo1G5vQQ0mqmSbbMAiIUU7kc9Hndxut9zX3TN2vLah/9jRuq7aQ4e7BvsG7LiT6rNYMUpjz09+itEHARCkIEndeftt8bfcdfvKV1/88749z+5qhqmbSZTP6eB6BDjswCWRTEGKGABxABJ+vuupB4s3lF+vyLLc291z8dSxE72Nh4/21R2p7etu7xiBNfPB6wh/OkZgh0lBUnhReWlq5Y3bl64ozE/MyM1xuWJdi3J1oKFLb4kDOwt3bHRsuqutffRM08nB/a/ubTle19AnL8gUC+arMvyZ4KS6DJWXkZsVW7ZpfUrx+vLU/LWFqSnpqfGiJIkNh4/u+9h7PvRzAIMAhnWQp/T3LgQCbjA0ro0BEAsgKTwyPPOlowe+GRUT7eTvmRgbn7nQ0jp8+ljzQNUbB9qO19b3zs8vvNVOs3o+LCE50bVh6+aMko3rMlcVFiSkZWXEOhwOCzcxwRNVlmVVFO39WI354TEZeIPI7XYrvZ3dI6eaTgzVV9d01h463DXQ2z8KK3e+pUkcFOSIKF5fnlqxfWvuqrWrE7PzlsZHxUSH2ozx+FcefPh/aw5VNwEYgAYwuUvzDf0tHgEOb+CGwIwZJwJIu+U97674xg//6xM0iN6S2W63W9HFVd+JusaemoNVnVd7QERRDCvduC6tYvvW3ILiNSlpOVkxTpfTK1d7saRt9efY6Nh0X2fXeFNtY1/VGwfa6g8f7eF055VOVCOfnZyW4lpfWZFZWFqcvra8JDk5LdXpa6LSGP/uRz//w2Pf/u89AHqgATwKTTxftgPXrkCOdYOIe8JXFubnGi9W+EiNqaMcDoeYkZ0Vm5GdFfuuu+8sGBsdu9TddmG0qb6x7+jB6vbaqiP+DhaVnYrQZqcxWIqiBNdWHRmsrTpyigZrw9bNmWvKStILStYmpaSnudjB4nOvrMjVJ+PoifpjAyfqG7sP7zvETsaromJEUQwrr9iQtqFyc05haVFqem6WM8Zp7w7auV6CPgkzcrKzoKnKJTo2DviIXHkDV4DVYg6NiXU59QaA5VhVUVRBMAeM52qnyxnudDnDC8uK09/3wD+X9XR0jTQ3Hh9sqm3orjlY1THQ2++PEUIm/5zdQPb39A3ufvL5C7uffD5MCpIiStaVp2696YbcvPwVidl5S+OinTFhbAcnxsZn2s6dH245dXbwzb37W+uO1PTJCzKbZvOHO+0K5A01kpKeGlu+eWPG2nWl6QXFa5NSM9NdPHfy6U4+KkZMQ9+PjI6M1p9PxffkrdiSt9JWfjYGO4Ichh5gIzcABEEUbQvTAI0zREEQREkSHA6HmLU0Jz5raU78be+9YzU592dPnB44+Nrrrcdq6nv9dB+8crW8IIfUVh3pr6060gxgSUZuVsyGLRUpGyu35AoChOr9B1uPHKzq62rrGIe13IX3OQM2AEvWladet+P6pSsK8xOz8nJj7biTQAWsPjZfRaIxiNWwCw4OpncSsN7WQi0KrqVDslu2ZDB4N8Sbr+grcOB0OcOd68vDi9eXZ7z3Ix8s6e3sHj12tL6/ufFY9+F9hzovDgyNw5OrWeed52qy9I3gSldbh6OrrePM879+aj+NLawViDRpAubOxJQkp6E7y0qSvXCnnY/tETzxBJaRjqaxR20iYH0mExYD1wBZEASj0YosU9jOa/1SoKUxDodDyszNjs/MzY5/9/vvKhwdGZ3uae8Ya2443nto7762hiO1fbDWHtlFdxRok4BffskPAPs7diKLsC4q89CdRetLU7fs2L60oHhNcmp2ptObe2Ybx/bCEHZRMXbcKDWoal1iuZXtgwf5WnFgm2rS3QhWx9LMExYBlqsrNvSLrX/pinVFuGJdEYVlxel3f/Tesq72jpGTx5oGj9XUdtYcrO66ODBEupoNyfExWUuIjukXH1plAypsHXVYYkqSs/y6jRmlG9dn5q8tTPTighkJfBorSvV5GwN/RLGR92XyvbCuOWZ/elAgq/zoIb7SdrZZF7b81Iwi+U6aqyqMmK3D4ZByli1NyFm2NOFdd99ZMDo8Mt3R0jZyuqm5Xw/E9+uBeCo0m9YHgi0flfX2U2FfODRQKckRCSBCCpIi15QUp2zZsW1pfnFhckZOtstXSNRb2Y5dVExgJB1UT4ZYLNwpy9QF//K7foMrK8YssnAsy32U5vJMjXnUIhnusbfZapSsmuk0gV7viouNcMXFRhRvKM+856P3lfV2do+dqGvoPVbX0HZk36HzFwcvDuh9c0MDl3QzDYwEjTNjAMQmpiQlr6+syFtTVpK7trwkNSU9zSPsSf3xnKieY2CTulw03OlLfJPOlbzEtb3RFa3PtQvbBbpcw5/ZqseRuVSftXhN19VxmbnZcbfd8541IxeHp4b6+vvPnTp74q9/fOlAXXXNWWh6mcRyMIDwdZs35txw+y1bl61eWZiUmpLkinVZVjWoehJf0OcqgSQ5+KoLz+oOfgwERoXx95DU4hnCco9GAQELBACuqNtT5Fjz+tKmgRB9rN3xp5R00VixPsCsJIiNj4uMjY+LXLmmYFlGTmZcXXXNY9C4ljgxDED0Rz7z4HtKNq6r5PvJt02fUH7ZDIvVfXH3eCT0vXE5k1IMaB2R3+Cy4pjNuiyaNJdlVVEtpr6vaghvJSt29/hMAgDA/NzCEmgZLXKTAE2/RsmyO5TeJejmqd17mHShaH3vogkKS0WIjVWsCgJ8FufRPYQBo3P9Ir/BJfHgGYmyFavGDBdEEQ7GjRIEwRBtdI+ux4xnKJ7GhqHL6f+w4XLiCqLLM7MOaGBOwTSolgAIn5melfj+sDYD8x4LSHbF7FdSw7VYeZBddYcoWoz0RSlgg4oGwkue1BKcp7/NTE/P9XZ2j01NTs0tCV3icCXEh8clxEc6HA5J7xBrSHi4B5YCcdPY8Cq+Aag6QBSwD4Gmd6F/DpVlt1Esb2cz+FGC46Ev9XZZdKMoigJExpX0rO5c1OCi/lhmrh/kN7iSKFkayM5WflGWqqqqKIrC/Py8+6Vnd5367eM/a+vv6aPEshoaFhq0LH9l3JYbtyeuv25j2rLVq5JoIHQbxu98rF5kznGF1g63e4HcHvJlQf9XFMXou0fggOqkGFVko2M9ymsAbSXB1NT05dlLM/OyIquSKAlLwkKDnC5nhChJAqvSSBpyBpdFL9PEpaH3Fy8gMJ0LowGwRFA8VtuJoijMTE9f/sL9D+0/+ubhUWgV9JPQwZ2dmQ1qqmvsb6prbP8hELn5hsrkD37s/hUlG9dl+rAiDcuZ3sMHAWRZVthYrGrdooEGSAQg6X/TVYenBOJ9Ut2dE2gsKFMzN3t5oav9wkjzsRNDJ48dH+lsvTDW29E1NXxxeEYHQ3S6YkLzVq2MLywtdm67ZUd2Xv7KJEEQQFUjXow2Vk3Q2PsLF4ArcIUEQRAESTM8efeATH0AePw73687+ubhcQAXoSWWp6AFE+i9IdCr/97ce+DSm3sPXLzvkw/03v+ZB4vDIiKWeDGeLNYqAQvoBfACV0GhGiU5bHBd+2wOlMEYjP43gBUEwXBLiAb7ByY6tS0VBg+8urfz/OlzI/CepxbGRsel2qojnbVVRyJ++YPHz9z14Q8sfeDhh4pccbGRRn/0clpqtl3iQLPt/Kcr0rn6QNiWkoqSJLacOjPw/K+f6oEWHmTLNt3QBpndls+ov/rd47+Yq9q7f+i/fvV4RWZudhygiXy2ApExnlhRbIkIkX/qUVphJUtozwwcmBkuPfYtLMzNLbSdax1ubjg+2HDk6MUjB9/svDR1iSQRm560uwgRKl0a+8Nvnp7au+cvQz96+lcbVxTmp9hEuKxp1bc7iCEKzAzSZzgNBO+PvbJ7Txt9Vf9J8Vw2OE/iUoYWG5YBzLedb1146H0fPvSbP//hhriE+EhB8J5s0NpiznBWT0MbFe8dYoDnF3+ZE0gS33z9QOvj3/7eqdazLTPQVAvVLs3BfuUdm3VigVdhhkYvj4+MLjx4933K8/tf3pmQlBilNdecqKzU4iWHvxSYbQ0zaiQ5NJFIuo9EyqVLl+ae/MmvuvSvU6E6rd11ra/ctPw7P/+/f/qfX//4jjvvvacA2mwWoXHvFICR/p6+gU++9743Lk1NXeZFMR+tYkUXbw/AF+PqwFN/eGBpQE/U1Q/pwI4C6APQD2AIZokLr2rYPT5CYDLQvP79Uf3+/qmJyZ6vf/qL1SQ1FNk2eLKIAPJOARtUgEX3gc9FhoSEOL778x8W7X7yuQu6zk2EFpxfKFpX6vrOT394e0RUZBgAbNm5ffPt97yn9Ruf/beX2863DsGsw1XbzreKP//+Y/UPf+3LFWRc+LFY2uqK+GmBeHOrACA+MTEUmmQZhmkYzkOTPGEwkxChyWnJURnZ2VERUZGS2+2eO3fydP9Abz/do8LMYinQJVht1ZHQmv1vtm3ctmWp1bBTLIYqoG2Q5k9/iALRuQB498AzvixJkrTt1p0rtt68Y3lzw7HuJ3/667MH/rJXBIDP/vsjmwlYolVrC5f+ZNdT933k1rt+1tPZPagPnAJAfPpnv225+Y7bc5cX5CcvlkUCbAvG/dG5fITL4k7KsqLCXL8zBQ1oFUDQktDQ8B3vvrmgrGJD/tIVyzPiEhOiwiPCQ4ODgyVFltWJicmpltNnLjzx41/srTlQfV7v1wxMKRUCIOKJn/7y/Ibrr1vK9kcQGEtPJ0nyyGX4pCtKHHBrUC1JZvqOKIrCmrKSjIKSovT66iMde57b1Z6alWGUxbLc54p1xXz6q1+s+OIDn9oF09oUACx56me/Of3NH/13sp2O1QfCM46tqlrwwLc4Y61QcqvY6BRbiE4GIS2CDtp+2005n/vGVz4enxifZBdcECVJcLqcUeUVG9esLFi99KsPfe5X1W8caoYGMOWcLwGYqq8+2j3Q0zuWnJ7m5BeVseFR+J6sHuS3zpVEZtaYRo21+lEPGSqyrBrcJIpC+eZN2f/v8e9vi4qKCtNvB611JZBKN21Y7XTFSDCXT0wDmPzL7j1d/T29YwD0yn+PWmQuJq0YpaA+DSqzK2yxgcBOOuZr7Mp2CUBIWmZ6akJSQjIbyFEUheIS2v/1iRcZHRX+zcf+5yPxSQnJ0PLGQcxzZwBMn20+MwQAgijS+l7DUA00MkUUsEGlMPlYXTTb7g1BBomiKCorNtl79MFUASA8IjxiWf6qcJjLUi7rHZ85dfzEoP56j6AGX2TGZojgI6LDuhm2iQK9/aIosIVyVO4bOjE+HkRAspOOJjcrVlVVVaNioiMefOThbdDAXQJzPdA8gNn28y0TXLvY4AmAwHWu3+CyOpcZCG+LshifTTVrgDiflPS2dq/bPdDfPwnPojW550LXlP5cy3vYKBJj2Pk1y1UdeNFSf63ligXdWmWIAiHGlhGyLJurAgSBfYbRNpP7tD6WV2xYDQ3cUJjcKwNY6OnS+mj2x7rvBhC4zg2Yc03dJ/NbFXhwkk3eV2XvEQTBEKlN9cfqOlsvjEITVZaS0suzl41cFysFWNFlMbj0wfTpQzDgkZqwS1Aw7RDAlPq6593BzJgY92iRJrNtlG8GgNi42OiCkrUpMFdJitAmmXt8ZHTGcIkYYNn+LGZE8BRwsh6AOcM9RSQf3eFTY6IgCGg5dWZgoLd/alnBqgRBEHG2qfnko5/+/HMwjRYKcgQDCIl2xgQz77HmcBXPXePYHKg/xBtpLLDMR+JeCYBDURWH9RlceRBXZA4AQSEhjsyc7PjmhuO0tplInZ2ZnVcVVYUIgdf/hnj3x4hg6IoTB3wxGx+t8rKJCQDg4Gv7On/6vf9rDwsPEyVR7Juamu6GFvkhN4PdbjC0aF1pEg2Cx8Jnm+pBg2F9R6hAz/G1nxQTHBKYS4SqGhOIXW3PjYEAQKDwIQBEu6KpMM+h91UDTlEN8FhDlXXN3vbEATTrFNQJwFKVYF+HywXAh4eGLgPAzKWZKWhrTS/BDOexm5iFve+j92auKMxP0V7skamxTiBm0um06GgwAshiMzCA2IpCQRD5wI7FsPPgPn2yhIVFLIG5CwEFM8SQ0BCHqBc1kM/N54oDJb/BdctuIxRmGEYAn1u1+L7sNj00WKqqoqeza4YeC+vmWRR3DgEQ+u7335X3qS9/fr3+fHjRsR61SAYwvnUu2x/DhbGJ43qdIPQevpyGz1aBmSALC/O2S1SiY5xLTIORK/Wh9wiBxZj9BtchOUz/Qq+YsFkjZJmtnIGiCJIkjo2MTtUcqB7XH8Xvw4yIqMjQL33nGzvzVq0ozlm2NI+eLwiCYMOxql3xt6A1S1hERbH9AfWHMYRUQfJMxhv3qBaDy9s+HLIoCCIbORsfHaOzIiiJIgFwJKenGPti8sWGVNarBrjPdsBiWZ/kKlt1YbvBpU14UGu4KH7ikYdz+3t7Z3oudM3UVddMQ/NpZQCXZbc7yBnrjGOANYrXbMpcLJJBTw9CoJotPySaSmUsolW1+JGJMSeHadgJTNsUHlhVVQlcGg9jS+PM3BzK7YIP0lypaL6i8COb87SrX/YS1BABbfHXRz7zYLn+N6Xt7PmhZ371u6qXntvdBGBqdmZW+cTdH/7r9lt3dv/rN7/6T/GJCdGqauzR6GE8sRaunh70MHRsiQl0sMDa+ZfeH2GIXouO9banxtTE1GzL6bMj0JP4YNZA5y7Lc9EzLTaEdcXB2xbEMCw5diB4o0ZySKKvoIZmXWttFCVJzMtfmfTo9751xz33f6gc2s6v4QAcr//51b5HHnjo1Znp6TlBF+/ejCcqrGOzVezg25Kpcw2fVJMEZljVb9IfYgBrU7IKAAN9fRO9XT2T0KSUAH2D1OS0ZFd6blas0TSbFQfA2xvEsAbaZfsic8vDtYIwgbvH3LdCj8eKkiR+7utfvrVie2UetDSaBEA+UX988PMf+eQ+t9utUESLgg0CO3iqyicO/EDXJJuCcd9crxO9x1ALlF82I2mWpEZD9dEL0LwCspJDAIRV3rQjMzw8PIS5R7Xtz9uVOGBXHCg2HEvG0+E3DrbueX5X8/nTZwdGh0em2QSCfg/NcKMoW9XAEf7l85++DppvK0DPmtRWHenZ88wfmgHN8Fksjq0yJbU+ibFE7faTNP3gxY0yRsfy2SoD6IW5Offvf/NUs94vFRrXhgGI3PnuW7OY/hiumE1/3rYghmHu+1qd1t7SOvGD//jueQCIiXUFLVu5PDwtMz102203Zay7blMOAE99qVvDKwvyU0s2lMc1HKmdgDnDHd979JunKm+5MdcV64qgSUyz2cYQMiesf7LVZ5G5P/PEI3nCBDXIjXnljy+d6O7oHIYWgSOujVi3eWNmftGaNDLsGJvBoz8BqQoEwLmsCDKtV2tZCABsvH5LOt0zPjK6UFt1ZHz307/v/9qnvtBo6B+B4z5GipZVbEiENrtnoCW0xxcW3KOH9x3soO8wotii/9kKCj86RO80JqrMhFW9DCT9UhUEUWbeZS2NYdSEIAgYHR6Zfuyb3z2i90mBuXQ0+mOf//RqGl9eAnEZroDJb3AV1VpWqSoKOD9WBYCs3Oy4/LWraT2rG3r14/DF4YWezq4RvcMWncRmYRJTk8Ng7nVIW+JNvrHnlR52wPk1Qhb9bxpLvvpnPIwmqiRJbKEdj66qXwoAtyRJsqHarWOgshw7Pz8v/8fnvvSX8bEJSopQeU70De+6OaewrDidJBe0UCUbl6ctg8GOm790Rcl6ChTwug/Q9MWd930gS//qZWjgjAEYefWPf27VG2lZgyGrSJkAAA8QSURBVEoSHwAURWGPTjOOZmlqODY8OT4xQ/cAllIfo98sKKoX9gM1gr6nT1SjITpI3B0GsADmBUmYYx+lr901JpkgCHC73fL3v/atvVWvH2iDuZ3DEgCRwcFBsQ9//UtlXHNooloMuyvl3itK1sMs+zA6xfqXW3fekOd0xVBgfAEaB47/5oc/qetqvzAMACS6yHCAbpy0nDpzAdYtg+YBzE+OT86OXBy+RO/gRLGRjxWYDa99Eqe7vSUO6Nv6RbvoXA4KCrpsjAm38g8Aujs6Rz577wO7X/jds8f1/sswN2+LfeyZX1ckJCVGq0yQxnb7X2tXVC+fbWkxcD0eIAgCPxCwRqtkJTI6asmnHn1kBbRZSgHyywsL7vGvPPjwnwb7B8aI++h5giBg5OLw4J+efaEJ1h3CPcrsuWCDmY/1jOb4lTigLQNZ65tjegKWds2ZCQ4OnqZX0RogQRAwe2lm/tU/vnTyQzvv+H3NgeoWvS9uaMGKSACxn3n0iwUlG9dl8v2xs9hZy182JaTKtMsreQOXfYgCQFH0tQwMx3rkcNl633fdfWfBjttvSYFZViIAuHym+XTP+7bd+tv9L7/WMHtpxjiTd7B/oOfRT/7r47Mzs7R7G21zIAJwBAcHhUTFRC8BAAZY6zkCnNPvz4oD4z9MvFzvo64mVPquDLO+ayra6TQ4V3bLcl9Xz8XdTz1/9ON3ffC5r37yX1+dnpy6CNOACoFWux33iUceLvjQgx8tpXZyNoNHXJ7VufqKAzuAbUH25gp5gCtKVp1LA6ENgMeJHKogCMIXv/3vG0/UN04M9PaT2J0FsDA5Pjn6hQce2pOTl/v61ltuTFVVZW73E88e140OSthTsj4MQPiKwnyXK9YVDsC61IKvX/a/QM4MytgcY6Mq2rZ8ZCuBqXcCIISEhIwP9g+cPt14ovXlXS+2H953cHJ+foFeSMtIDJcHgPNzX/9ywfv/5Z9LtKbpX1VtgicCl3ARKRMiCLA/ptWWfPm5tCxCASCLoqBSo/jEgZeAPmKczrDfvvzCjs9+8IH9Z0+eFqHlbqlud769pW26/Qc/7oUu6mAWbFPaLxL6uQk3/dPtaYx7YZt5YuqXdPj8ShzoEsgjvsxLNdagUn75g8frf/it753V20jF6VRBQjnpUACRS0JDY7//u5+sK6/YmG2OocUqtvWxmaWkencEer9fp3V6E8s0K0gUzV+evTxj3MQkDmRZtlirVD1AAx6XEB/5g6d+sbVoXWkqtH2baf9CB/MudhuhJTB3jI0FEC9KknPbbTtzmYHxFV82EfVtLRtfYQMhMrMfo/ZclXLMVD0hAsDMpRkq4KP1QGQbUOTJCSB++607lz392ovbCFgaNztgYVZ6aG6iqloMu0uXZuy2SwyIc1nL0FiB19HSNqiNiTEoKp8NYY0CvYEqADUuIT7yJ394Yueu3z1z4n++/p/nFFmmxVTsVndUfQH9ZxQ0cJP/78lflNFyR+25Nlv7cAOh06LJejZKpsjW/jAqmz2Jm7amZ48JoL/TcQERa8qKU+976GPLrrthax73WvuNTzzPUvAoHOjr7rkI636YPk8J8wYuy7VzAGaq3zjQ+i+f/7Q7ODjYwUeEyFrlk+as+HY4HNLd999btL5yc/qe5144/9yvnuyYu3yZSmxYy5jEWXRMrCv2G//73bUbKiu47YAFHlhLjbCqBrbigLdWjfforhrMhWwyNPFL4NIxAXRFbr6hMvOmO9+dsfXGbXlBISEO/flmxYfVKvYGrKVWjHYpaKptaIe5DyYLbsAGleHTAbjUcub8wMmG453FG8pzmfWjtrlV1u+jzimylg7MzM2O+9RXvhB314c/mH/mWPPA0arqwdPHTox1tF2YlGVFDQ0NCSkoXhtdecuNqZu3b81iFih7VnfoBgBrJVN+2Reqlo4a1rZFRJoFVNqPaJhVmWQBOwCEhYSERBdvLEu7bvu2rLXlxUl5+SupmM9cvC0IdkanpQzJOm7WKlIAwsmG451797x8Dub5frT1YUDWsiUSAzMMOLHryWdrijeU57KD6cWosdtphg2Aq0kpydFJKcnRW2/ZsXxhbm5hbGx8Vna7lSVhYUHR0VGhvIj10LHc9gYcV9CLvKPKBKioMtOuP4xkjINmCyykZ2WGrK/clFxQWpSytrQkJSk1OZptL1uvTM/lgbXZlM127y76/64nn62Zn1+gZaPsySQBiWWtw+bi4VnoIcS/vvjyiffc9/51RevKlhoDbvXHvPm+PFdYXNCgkJCghKRE26NYjXtgFV2qaq265IvK/CWBAZb21GADB4P9A7MAsG7zxphN2yoT15QVJaRnZ7miYqLD7J5nJ1btgBWsO7Pa7o9JE7exprb1ry++3Axtbe8kTI/D57m6vsAlv44WZY0BiPzPf/v6nl/+8dmPR8VEhdkkDvhjX/g4qedksM5wz0pGrtyEBo8dCP6YVPKzfQLNcLVhDPIiHxB2vOuWnBtuuyl7+epVSbw0YbfyEwTBizSxOXvQU8dath1k67EmxydnvvOlb+yBtrfIGKxi2aef6ytCRVYhgTsO4GL7uZbWL9z/iSemJiZnLaJYz7ybnTJWGBizlXfOdQvXAqwoiSJb8Mau3bHjCt7C1bdNYgFalPQJZFmLRAmIFYX5ySvXFKRYarOYtrErG1XVc40QXzhI9zCTg11LRaWxgiAIwtTE5OwX7v/EE+3nWlp1cOnQ5MvwwxVaDFwZZoBhEtrq8oGGI7Unv/3Ivz8/NDA4QYPC1Dj5rF82JgMgcOIbXHbHqEWi58JD5KuWsla6x2BYPyS0YiPyAWvRnOyWjbWZPgxIizThI3beaqss5bQw6s2EoYHB8W998dHnGo7UnoR51AwFgVh9GzC4gNXXZVN3QwB69+555eh7K29+bO+eVxoX5uYoDqwpEs84qV3Whc/HMssoZH6GWxLgxLEULFFVFW6326Na0J86KMFGMvDVkDZLPK07y6lgI1qsvqQxAFdbxQIJep4gCMLC3Jx7755XGu/asvOx11/6y1EAvfqYs4dELcq1gO/wI5/mMqIn+u8WpienZr708c8+s7a85Ogd995TvqqwICMtK8NFexULggC2sJtfV+Rj8Hxa30w81lwFL1gTB4KFhb32zywltTcGPSsbmTpps0rR1rCztTN0UC3tooMdT59o7nrht88cbaprbIe5f9coNHHMnoJNwF4xuDQA/FahZEkbpTDHaxvGjtc2tAKIXl+5KXv12rUZxRtKM/LyVyWwx6ny+zx6O2rFl9/Hb75pd49gibN7JQ8OZ2wGj4J3LysBVb5tvjZlYefa2OjYpZbTZ4bqq2u6Tjc1d9UcqL4ATeyOQ+PScZjn6XoczIhFgAX8AxcwAeajV3Q65AQ0HzCy5kB1f82B6mb8ABExsS7n9Tu355RsWp+9sjA/gT14URTNDS8NPe2pk+wGj9VjHveoKlRRMEo1F+u/wbFWQ8iLhWujL23aBsBTai0sLMj93T1jZ5tPD9VXHbmw79XX28dHRsn6Zbfwp8/saZvsVv5+cS3gX/UjCzCbBmSDHNPQAA5jr/GR0fDdT//+wu6nfx8OILxs0/r04g3lmQUlRSkrC/OT6DAnQRAEgRFVrHHBDZ7FX7YL23GbbdoltbXPXhIHrMjXnmu6LvRePj3I7/NMND42NnOu+fTAifpjfY1Hajvrqmu6YR6ITNcMd1FpEX/WEZ8JWpT8LW1VucuyrZ/eKFpTu4S7KOAeWldd01NXXXMCQERsXFxMxY7K7I2V1+UuXbk8LjUz3Tj1gw0iMIu/LJa0XVSMFau6ziW1wu5rQZJHZt/F+OUW0NgJZIpiE0hBMPePpoMdW8+cGz584FBb1WsHLowMD4/D5ELiRPasJPZij6mlIAXbfr9AJQp0rRABy4pnNzSrexaex5+z5/JYjnQZGR4O+9MzL1z40zMvHAUQvv66TRmFpUXpRevL0vPyVyTEOJ1hgDH4gYU79bokSZLIGKRBgv553qH9DcY9du4by7GcwUU0PjY203bm/FBjTV13U21Dd82h6i7YcyZxJHtEDsuZ/BF3fuVsfdGVLASjFwlMIwSYs43Sd3anadmBHQYgrOZQdU/Noepw6FxdefP2pSUb12ctz18Zn5KR5gwKCpLsrG/oHGu4oUw8VpIkirDRAEL/fFmSpAXzOTZGGsOxjOUtLCwsyH1dPaMtZ84O11Ud6TjwyuutHHfyItYOTP6wK2+AAlcAKtEVrfLjXko/eaAt609hPfGaBduWq3c98dyFXU88R7o6o3zzxszVxWtSl69elUBxXdb6ZrmPGig6HKQySARCb9OMwxE0T/exOlYQBPCbZE+Mjc+cP3Vm6GRjU2/tm4c7bHSnL+5kweTPpufLZa6IQ73RWwGXJ7W+77wKAKUpy9iV8gQAm5RfjKuNc+0BhOm6uglARGJKkqtie2VWWcWG7MzcnNjE5KSoqJjoUN4oA4Do6CgVZqD9MvOnyaiYKEvBH0uT4xOzQwODk52t7aNH36xur37jYMdg38AI7I0gVmf6y52s7QJm3PwfbT/oaoJrEDUWup4rTVlGhV1vlatDB/sGwnY98VzLrieeCwUQlpOXG7t01Yr45fkrY9OyMiITkhIjomOdS+ITElxu2T0E83x3KiJ3AxDn5+cHZy/NTAxfvDg2Pjw6OzQwON3V3jHZevbcaMupsxfbW9romHYygFjOfEvcyYzP20oes7YkOc/ue35Rfd/5Rb+jAw1cGVfznE2XsTtMRFQkUjLSsHpNgdTf19d7ZH9VJzRuIx0bBCB8w9aKzOSUlLQzJ066uzu7MT05Bb0tbJECf83BP+5kwbRw5yJjs+j4eaOG/haP311VcK+QBOYS4R9Xs6DT72my8AEWdqcc6M8NgVbvFA5zclDtLoFLJUbz3PU3153+kB24b4tYDpDYgeB1NQs2AU37SLAVifR7suApF836jeyzCSBy3+heNlnC7nS+wP3eljvxNwZ0MXongMsSH+5kuZp0tQCzxJStnmSP+KaBZ7lLZZ5JbtsszMlD72dP12YPYFbxd+bOQOmdBi5PdlzNAy3Cqr/Ze3kwAE8VwN/D33fV/M6/Nb3TwWWJH1yyvgFPYAVYQeABWey7/3BAXqNrdI2u0TW6Rtfo70f/H5+vrFfqaifoAAAAAElFTkSuQmCC')
+			repeat: no-repeat
+			size: contain
+			position: center center
+		
+		&:not(.hidden)
+			display: block
+		
+		&.hidden
+			display: none
+		
+		
+		&:hover
+			opacity: 1
+		
+	
+	
+	
+	&_gallery
+		+resp(margin-left, (xs-down: -8px), (margin-right: 0))
+		+resp(margin-top, (xs: 15px, sm: 20px, md: 20px, lg: 24px, xl: 30px))
+		+resp(padding-left, (sm: 20px, md: 15px, lg: 20px, xl: 40px), (padding-right: 0))
+	
+	&_item
+		object-fit: cover
+		+resp(height, (xs: 26vw, sm: 80px, md: 80px, lg: 100px, xl: 100px))
+		width: 100%
+		cursor: pointer
+		transition: filter 0.16s
+		margin-top: 4px
+		margin-bottom: 4px
+		border: 2px solid #fff
+		background-color: #eee
+		transition: border-color 0.16s, box-shadow 0.16s
+		
+		
+		
+		&:hover:not(.cardimage_item_active)
+			filter: brightness(1.08)
+			box-shadow: 0 0 0 2px rgba(#ab2d77, 0.5)
+		
+		&_active
+			box-shadow: 0 0 0 2px #ab2d77
+			cursor: default
+		
+		&_video
+			position: relative
+			text-align: center
+			
+			&:hover::after
+				opacity: 1
+			
+			&::after
+				content: ''
+				pointer-events: none
+				position: absolute
+				top: calc(50% - 15px)
+				left: 0
+				display: inline-block
+				width: 100%
+				height: 30px
+				opacity: 0.8
+				transition: opacity 0.16s
+				background:
+					image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAF5SURBVHgBxZeLcYMwDIZlJmAEsgEblE6QbNB0gnSDdgOyQdmg7QTQDdIJYAPYQJWCnSO5BORX8t39gQObX7YjPxQIQMSULjlpTSpIGSnVrwfSQetXKfUNvrAh6YPUo5xW18nABar4Zml4LYAXW9M9hqOUmlYYns97tvSS8pbpFuNzGnOlTTO61DCmSUw49VaUckOiH2zvYMpw7u/4xrS4FRo3upyk7C2OrWbTjXB8alMTx/9Di+4U3NVPYAmNUUVa0e0rqQN71mycgyMeARTcbdJpsV76msUQ9IByFo0nAdRLH0vgQbDxAIEwXQ3jmj3HcQLpIJwhLwaZoMqBjRtwxMHwzPhHWDgNYGhozPZGmlJf6DdjoQ4YEl4p6LoXRroB/8Wk4h+zSHA3ciQpxKUjPVNju9MTHDd3sbm++aMXJcZjftOHj9jsRWq5bHs7Mfdd7DlFd+ACVcxI75YB9LrObIYoYQwchDmw5VrTQ1sH49TLB7Y/PTfM8g/L6bLZpQRF5wAAAABJRU5ErkJggg==')
+					repeat: no-repeat
+					size: contain
+					position: center center
+				
+		
+		
+	&_empty
+		background-color: #eee
+
+
+	
+	
+	
+.cardgallery
+	position: relative
+	visibility: hidden
+	
+	&_visible
+		visibility: visible
+	
+	&__items
+		li
+			+resp(margin-left, (xs: 8px, sm: 8px, md: 10px, lg: 10px, xl: 15px), (margin-right: 0))
+	
+	&__arrow
+		position: absolute
+		display: none
+		top: calc(50% - 15px)
+		
+		&.visible
+			+resp(display, (xs: none, sm: block))
+		
+		&.disabled
+			i
+				color: #ccc
+		
+		&:hover:not(.disabled)
+			i
+				cursor: pointer
+				color: #ab2d77
+		
+		&:active:not(.disabled)
+			i
+				color: #ab2d77
+		
+		i
+			font-size: 30px
+			color: #8e8e8e
+		
+		&_left
+			+resp(left, (sm: 0px, md: 0px, lg: 2px, xl: 5px))
+			
+		&_right
+			+resp(right, (sm: 0px, md: 0px, lg: 2px, xl: 5px))
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.reviewsblock
+	margin-bottom: 25px
+	
+	+ .reviewsblock
+		border-top: 1px solid #eee
+		padding-top: 15px
+	
+	&__top
+		margin-bottom: 10px
+		display: flex
+		align-items: center
+		
+		
+	&__author
+		+font($fontFamily, bold)
+		margin-right: 15px
+		font-size: 16px
+		display: inline-block
+		
+		&:first-letter
+			text-transform: uppercase
+		
+		
+		
+	&__date
+		font-size: 14px
+		color: #777
+	
+	
+	&__text
+		margin-bottom: 15px
+		
+		p
+			+font($fontFamily, regular)
+			font-size: 16px
+			color: #555
+			
+			&:first-letter
+				text-transform: uppercase
+	
+	
+	
+	&__images
+		position: relative
+		display: flex
+		flex-wrap: wrap
+		margin-left: -5px
+		width: calc(100% + 10px)
+	
+	&__image
+		padding-left: 5px
+		padding-right: 5px
+		margin-bottom: 10px
+		
+		img
+			display: block
+			object-fit: cover
+			+resp(height, (xs: 70px, sm: 80px, md: 90px, lg: 90px, xl: 100px))
+			+resp(width, (xs: 50px, sm: 60px, md: 70px, lg: 70px, xl: 80px))
+			border: 1px solid #eee
+			border-radius: 3px
+			cursor: pointer
+			//padding-left: 1px
+			//padding-right: 1px
+			transition: filter 0.16s
+			
+			&:hover
+				filter: brightness(1.2)
+	
+	
+	
+
+
+
+
+
+
+	
+	
+.modelviewer
+	width: 100%
+	
+	&_popup
+		height: 80vh
+		background-color: #fff
+		--progress-bar-color: #fff
+		--poster-color: #fff
+		--progress-mask: #fff
+	
+	&::after
+		content: ''
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		box-shadow: 0 0 0 2px #fff inset
+		pointer-events: none
+		
+
+
+
+	
+
+	
+	
+	
+	
+.contacts
+	
+	&__nav
+		+resp(width, (md: 230px, lg: 280px, xl: 360px))
+		+resp(margin-bottom, (sm-down: 30px))
+		position: relative
+		+resp(box-shadow, (sm-down: 0 6px 10px -2px rgba(#000, 0.2)))
+		
+		&_opened
+			.contactsnav
+				display: block
+			
+			.contactsnavmobile
+				border-bottom: 1px solid #e7e7e7
+			
+		
+		
+	&__content
+	
+	
+	&__banner
+		+resp(margin-bottom, (xs: 50px, sm: 50px, md: 50px, lg: 50px, xl: 50px))
+	
+	&__title
+		+font($fontFamily, black)
+		letter-spacing: 0.1em
+		+resp(font-size, (xs: 26px, sm: 32px, md: 38px, lg: 42px, xl: 48px), (line-height: 0))
+		+resp(margin-bottom, (xs: 16px, sm: 18px, md: 20px, lg: 26px, xl: 30px))
+		text-transform: uppercase
+	
+	
+	&__subtitle
+		+resp(font-size, (xs: 18px, sm: 22px, md: 26px, lg: 32px, xl: 36px), (line-height: 0))
+		+resp(margin-bottom, (xs: 20px, sm: 20px, md: 30px, lg: 40px, xl: 50px))
+		+font($fontFamily, black)
+		text-transform: uppercase
+	
+	&__text
+		+resp(font-size, (xs: 14px, sm: 15px, md: 16px, lg: 17px, xl: 18px), (line-height: 6))
+		color: #000
+	
+	&__link
+		font-size: inherit
+		color: #ab2d77
+		border-bottom: 1px solid #d6a2c0
+	
+	&__map
+		+resp(height, (xs: 300px, sm: 300px, md: 400px, lg: 500px, xl: 600px))
+		+resp(width, (sm: 510px, md: 630px, lg: 1030px, xl: 1350px))
+		max-width: 100%
+		+resp(margin-bottom, (xs: 50px, sm: 50px, md: 50px, lg: 50px, xl: 50px))
+		background-color: #f9f9f9
+	
+	
+	&__addressblock
+		+resp(margin-bottom, (xs: 50px, sm: 60px, md: 70px, lg: 80px, xl: 100px))
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+.contactsnav
+	+resp(display, (sm-down: none))
+	+resp(padding-left, (xs-only: 15px, sm-only: 20px), (padding-right: 0))
+	+resp(padding-top, (sm-down: 15px), (padding-bottom: 0))
+	+resp(position, (sm-down: absolute))
+	+resp(background-color, (sm-down: #fff))
+	+resp(box-shadow, (sm-down: 0 6px 10px -2px rgba(#000, 0.2)))
+	z-index: 100
+	+resp(width, (sm-down: 100%))
+	
+	&__item
+		+resp(width, (xl: 300px))
+		position: relative
+		
+		&:not(:first-of-type)
+			+resp(margin-top, (xs: 20px, sm: 20px, md: 30px, lg: 40px, xl: 50px))
+			
+		
+		&_mobile
+			width: 100%
+			
+	
+	&__title
+		display: flex
+		align-items: center
+		justify-content: space-between
+		
+		span
+			+resp(font-size, (md: 14px, lg: 17px, xl: 18px), (line-height: 0))
+			text-transform: uppercase
+			+font($fontFamily, bold)
+			
+		
+		i
+			cursor: pointer
+			+resp(display, (sm-down: none))
+			
+			&::after
+				content: '\f107'
+		
+		
+		
+		&:not(.contactsnav__title_static):hover
+			cursor: pointer
+			
+			span
+				+resp(color, (md: #ab2d77))
+			
+		
+		&_opened
+			i::after
+				content: '\f106'
+			
+			span
+				color: #ab2d77
+			
+			~ .contactsnav__list
+				display: block
+	
+			
+		
+	&__list
+	
+	
+	
+	
+	
+.contactsnavmobile
+	height: 42px
+	+resp(padding-left, (xs: 15px, sm: 20px), (padding-right: 0))
+	display: flex
+	align-items: center
+	justify-content: space-between
+	
+	span
+		+resp(font-size, (xs: 18px, sm: 18px, md: 18px, lg: 18px, xl: 18px), (line-height: 0))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+	
+	
+	&[aria-expanded="true"]
+		i::after
+			content: '\f106'
+	
+	i
+		font-size: 36px
+		line-height: 20px
+		
+		&::after
+			content: '\f107'
+			display: block
+			height: 20px
+	
+	
+	
+
+.contactstabstitles	
+	+resp(display, (md: none))
+	
+	&_opened
+		display: block
+	
+	&__item
+		cursor: pointer
+		color: #000
+		+resp(margin-top, (xs: 10px, sm: 10px, md: 10px, lg: 15px, xl: 20px))
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 18px), (line-height: 0))
+		
+		&:hover
+			color: #333
+		
+		&.active
+			color: #ab2d77	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+.contactsbanner
+	+resp(padding-left, (xs: 5px, sm: 5px, md: 10px, lg: 20px, xl: 30px), (padding-right: 0))
+	+resp(padding-top, (xs: 10px, sm: 5px, md: 5px, lg: 15px, xl: 10px), (padding-bottom: 0))
+	background:
+		repeat: no-repeat
+		size: cover
+		position: center center
+	
+	&__item
+		+resp(padding, (xs: 10px, sm: 10px, md: 10px, lg: 10px, xl: 20px))
+		
+		span
+			color: #989399
+			display: block
+			margin-bottom: 2px
+			+resp(font-size, (xs: 13px, sm: 13px, md: 14px, lg: 16px, xl: 18px), (line-height: 0))
+			
+			&::after
+				content: ':'
+		
+		p, a
+			display: block
+			color: #fff
+			+font($fontFamily, regular)
+			+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 18px), (line-height: 6))
+			
+	
+	
+
+
+	
+	
+	
+
+
+.addressblock
+	+resp(margin-top, (xs: -20px, sm: -26px, md: -30px, lg: -40px, xl: -50px))
+	
+	&__item
+		+resp(margin-top, (xs: 20px, sm: 26px, md: 30px, lg: 40px, xl: 50px))
+		
+		span
+			color: #777575
+			display: block
+			+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 18px))
+			margin-bottom: 2px
+			
+		
+		p, a
+			display: block
+			color: #000
+			+font($fontFamily, medium)
+			+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 18px))
+			+resp(line-height, (xs: 14px, sm: 15px, md: 17px, lg: 18px, xl: 24px))
+			margin-bottom: 4px
+	
+	
+	&__row
+		
+	&__row + &__row
+		+resp(matgin-top, (xs: 6px, sm: 8px, md: 10px, lg: 12px, xl: 15px))
+		
+	
+	
+
+	
+
+			
+	
+	
+	
+	
+	
+.contactscontent
+	position: relative
+	
+	> div
+		//position: absolute
+		display: none
+		
+		&.visible
+			display: block
+	
+
+	
+	
+	
+	
+	
+	
+.matherials
+	&__items
+		+resp(margin-top, (xs: -30px, sm: -30px, md: -34px, lg: -40px, xl: -50px))
+
+
+.material
+	+resp(margin-top, (xs: 30px, sm: 30px, md: 34px, lg: 40px, xl: 50px))
+	
+	&:hover
+		.material__title
+			color: #ab2d77
+	
+	&_popup
+		.material__image
+			width: 100%
+			height: auto
+		
+	
+	&__image
+		object-fit: cover
+		+resp(height, (xs: 150px, sm: 150px, md: 200px, lg: 220px, xl: 250px))
+		width: 100%
+		+resp(margin-bottom, (xs: 15px, sm: 18px, md: 20px, lg: 24px, xl: 30px))
+		cursor: pointer
+		transition: filter 0.16s
+		
+		&:hover
+			filter: brightness(1.08)
+	
+	&__title
+		+resp(font-size, (xs: 15px, sm: 16px, md: 17px, lg: 18px, xl: 18px), (line-height: 0))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		cursor: pointer
+		+resp(margin-bottom, (xs: 10px, sm: 12px, md: 15px, lg: 18px, xl: 20px))
+		
+	&__desc
+		+resp(font-size, (xs: 14px, sm: 14px, md: 15px, lg: 16px, xl: 16px))
+		+resp(line-height, (xs: 16px, sm: 16px, md: 18px, lg: 20px, xl: 24px))
+		+font($fontFamily, regular)
+		
+		&_raw
+			white-space: pre-wrap
+
+
+	
+	
+	
+	
+	
+	
+	
+.stockicon
+	position: fixed
+	right: 0
+	top: 30vh
+	display: flex
+	align-items: center
+	justify-content: center
+	width: 40px
+	background-color: #ab2d77
+	box-shadow: 0 0 20px 0 rgba(#fff, 0.4)
+	opacity: 0.7
+	z-index: 999
+	transition: opacity 0.16s
+	
+	&:hover
+		opacity: 1
+	&:active
+		background-color: darken(#ab2d77, 10)
+	
+	span
+		color: #fff
+		font-size: 30px
+		+font($fontFamily, bold)
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+.payment	
+	&__title
+		+resp(margin-bottom, (xs: 15px, sm: 20px, md: 30px, lg: 40px, xl: 50px))	
+	
+	
+.paymentblock
+	+resp(margin-bottom, (xs: 40px, sm: 50px, md: 70px, lg: 80px, xl: 100px))
+	
+	&__item
+		position: relative
+		display: block
+		+resp(height, (xs: 50vw, sm: 200px, md: 200px, lg: 260px, xl: 350px))
+		+resp(margin-bottom, (xs: 15px, sm: 10px, md: 20px, lg: 25px, xl: 30px))
+		background:
+			repeat: no-repeat
+			position: top center
+			size: cover
+		transition: background 0.3s ease-out
+				
+	
+	&__label
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		mix-blend-mode: lighten
+		background:
+			repeat: no-repeat
+			position: top center
+			size: cover
+		transition: background 0.3s ease-out
+		
+		span
+			display: flex
+			align-items: center
+			+resp(padding-left, (xs: 10px, sm: 10px, md: 16px, lg: 26px, xl: 30px), (padding-right: 0))
+			color: #000
+			background-color: #fff
+			+resp(font-size, (xs: 16px, sm: 16px, md: 18px, lg: 22px, xl: 24px), (line-height: 0))
+			+font($fontFamily, bold)
+			text-transform: uppercase
+	
+	
+	&__sublabel
+		background-color: rgba(#000, 0.5)
+	
+	&__sublabel, &__label span
+		position: absolute
+		left: 0
+		+resp(bottom, (xs: 20px, sm: 24px, md: 30px, lg: 34px, xl: 40px))
+		+resp(min-width, (xs: 260px, sm: 90%, md: 90%, lg: 280px, xl: 300px))
+		+resp(height, (xs: 40px, sm: 36px, md: 40px, lg: 45px, xl: 50px))
+	
+	
+	&__desc
+		+resp(font-size, (xs: 14px, sm: 14px, md: 14px, lg: 15px, xl: 16px))
+		+resp(line-height, (xs: 16px, sm: 16px, md: 18px, lg: 20px, xl: 24px))
+		white-space: pre-wrap
+		margin-bottom: 30px
+		
+
+	
+	
+	
+
+.deliveryblock
+	&__sectiontitle
+		+resp(font-size, (xs: 16px, sm: 16px, md: 16px, lg: 20px, xl: 24px), (line-height: 0))
+		+resp(margin-bottom, (xs: 10px, sm: 10px, md: 15px, lg: 20px, xl: 30px))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+	
+	&__item
+		&:not(:last-of-type)
+			+resp(margin-bottom, (xs: 10px, sm: 10px, md: 15px, lg: 20px, xl: 30px))
+	
+	&__subtitle
+		+resp(font-size, (xs: 14px, sm: 14px, md: 14px, lg: 15px, xl: 16px))
+		+resp(line-height, (xs: 16px, sm: 16px, md: 18px, lg: 20px, xl: 24px))
+		+font($fontFamily, bold)
+	
+	&__text
+		+resp(font-size, (xs: 14px, sm: 14px, md: 14px, lg: 15px, xl: 16px))
+		+resp(line-height, (xs: 16px, sm: 16px, md: 18px, lg: 20px, xl: 24px))
+		white-space: pre-wrap	
+
+
+
+
+
+
+
+
+
+
+.about_factory
+	&__image
+		position: relative
+		+resp(height, (xs: 400px, sm: 400px, md: 500px, lg: 600px, xl: 680px))
+		+resp(margin-bottom, (sm-down: 30px))
+		background:		
+			repeat: no-repeat
+			size: cover
+			position: center center
+		
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			z-index: 0
+			background: linear-gradient(96.18deg, rgba(#3F2835, 0.6) -27.11%, rgba(#000000, 0.6) 100.89%)
+	
+	
+	&__imgblock
+		position: relative
+		+resp(padding, (xs: 20px, sm: 20px, md: 26px, lg: 34px, xl: 50px))
+		z-index: 10
+	
+	&__logo
+		+resp(max-width, (xs: 150px, sm: 170px, md: 150px, lg: 180px, xl: 215px))
+		height: auto
+		+resp(margin-top, (xs: 10px, sm: 16px, md: 20px, lg: 26px, xl: 40px))
+		+resp(margin-bottom, (xs: 15px, sm: 20px, md: 26px, lg: 28px, xl: 30px))
+	
+	
+	&__title
+		+font($fontFamily, bold)
+		+resp(font-size, (xs: 30px, sm: 36px, md: 26px, lg: 32px, xl: 38px, 1600px: 42px), (line-height: 0))
+		+resp(margin-bottom, (xs: 20px, sm: 26px, md: 30px, lg: 40px, xl: 50px))
+		text-transform: uppercase
+		color: #fff
+		
+	
+	&__desc
+		+resp(font-size, (xs: 18px, sm: 24px, md: 18px, lg: 24px, xl: 26px, 1600px: 30px))
+		+resp(line-height, (xs: 26px, sm: 30px, md: 26px, lg: 28px, xl: 32px, 1600px: 40px))
+		+font($fontFamily, light)
+		text-transform: uppercase
+		color: #fff
+		
+	
+	
+	&__texttop
+		+resp(font-size, (xs: 14px, sm: 16px, md: 16px, lg: 17px, xl: 18px))
+		+resp(line-height, (xs: 18px, sm: 20px, md: 20px, lg: 22px, xl: 24px))
+		+resp(margin-bottom, (xs: 30px, sm: 36px, md: 40px, lg: 45px, xl: 50px))
+	
+	&__textbottom
+		+resp(font-size, (xs: 14px, sm: 16px, md: 16px, lg: 17px, xl: 18px))
+		+resp(line-height, (xs: 18px, sm: 20px, md: 20px, lg: 22px, xl: 24px))
+	
+	&__listtitle
+		+resp(font-size, (xs: 14px, sm: 16px, md: 16px, lg: 17px, xl: 18px))
+		text-transform: uppercase
+		+font($fontFamily, bold)
+		+resp(margin-bottom, (xs: 30px, sm: 30px, md: 30px, lg: 30px, xl: 30px))
+	
+	
+	&__list
+		+resp(margin-bottom, (xs: 30px, sm: 36px, md: 40px, lg: 45px, xl: 50px))
+		
+		li
+			display: flex
+			
+			span
+				flex-grow: 0
+				flex-shrink: 0
+				+resp(flex-basis, (xs: 30px, sm: 32px, md: 34px, lg: 36px, xl: 40px))
+				color: #e2e2e2
+				+resp(font-size, (xs: 30px, sm: 34px, md: 38px, lg: 40px, xl: 48px), (line-height: 0))
+				+font($fontFamily, black)
+				+resp(margin-right, (xs: 0px, sm: 12px, md: 4px, lg: 6px, xl: 10px))
+			
+			p
+				+resp(font-size, (xs: 14px, sm: 16px, md: 16px, lg: 17px, xl: 18px))
+				+resp(line-height, (xs: 18px, sm: 20px, md: 20px, lg: 22px, xl: 24px))
+			
+			+ li
+				+resp(margin-top, (xs: 20px, sm: 22px, md: 24px, lg: 26px, xl: 30px))
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+.video
+	+resp(padding-bottom , (xs: 30px, sm: 30px, md: 30px, lg: 30px, xl: 30px))
+	
+	&__container
+		display: flex
+		justify-content: center	
+	
+	&__block
+		width: 100%
+		+resp(height, (xs: 70vw, sm: 300px, md: 300px, lg: 500px, xl: 600px))	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ddrdragfiles
+	
+	&__finput
+		display: none
+		
+	&__dropzone
+		display: block
+		min-height: 318px
+		border: 1px dashed #cfcfcf
+		border-radius: 5px
+		background-color: #f9f8fb
+		overflow: hidden
+		+resp(padding, (xs: 5px, sm: 10px, lg: 15px))
+		transition: background-color 0.16s
+		-moz-user-select: -moz-none
+   		-khtml-user-select: none
+   		-webkit-user-select: none
+   		-ms-user-select: none
+   		user-select: none
+		
+		&_has
+		
+		&_empty
+			display: flex
+			align-items: center
+			justify-content: center
+			cursor: pointer
+			
+			&:hover
+				background-color: darken(#f9f8fb, 2%)
+				
+				.ddrdragfiles__empty
+					svg:not(.arrow)
+						fill: #6c1efe
+			
+			.ddrdragfiles__files
+				&:empty
+					display: none
+				
+				&::after
+					display: none
+			
+			
+			
+		
+		&_hover, &:hover
+			background-color: darken(#f9f8fb, 3%)
+		
+		&_error
+			background-color: #fff0f0
+			border-color: #f00
+		
+		&_drop
+			background-color: darken(#f9f8fb, 3%)
+	
+	
+	&__empty
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		height: 100%
+		
+		> *
+			pointer-events: none
+		
+		svg
+			width: 90px
+			height: 90px
+			fill: #6895f8
+			margin-bottom: 1rem
+			transition: fill 0.16s
+			
+			&.arrow
+				fill: #333
+		
+		span
+			+font('Segoe UI', '')
+			font-weight: 700
+			color: #333
+			margin-bottom: 3rem
+		
+		small
+			color: #333
+			font-size: 14px
+			text-align: center
+		
+	
+	
+		
+	&__files
+		//margin-bottom: -15px
+		
+		&:empty
+			position: relative
+			top: 200px
+			bottom: 0
+			left: calc(50% - 50px)
+			display: block
+			width: 100px
+			height: 100px
+			
+			&::after
+				content: '\f110'
+				position: absolute
+				font-size: 80px
+				position: absolute
+				top: 10px
+				left: 10px
+				color: #7a718e
+				+font(fontAwesome)
+				z-index: 0
+				animation: fa-spin 1s infinite steps(8)
+	
+	&__file
+		width: 100%
+		height: 80px
+		+resp(margin-bottom, (xs: 5px, sm: 10px, lg: 15px))
+	
+	
+	&__fileblock
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		border: 1px solid #ccc
+		height: 80px
+		width: 100%
+		border-radius: 5px
+		//overflow: hidden
+		
+		background:		
+			repeat: no-repeat
+			size: cover
+			position: center center
+			color: #fff
+			
+		&[style].ddrdragfiles__fileblock_checked::before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			border-radius: 5px
+			box-shadow: 0 0 0 5px #3798fb
+		
+		
+		
+		&[style]::after
+			content: ''
+			width: 100%
+			height: 100%
+			position: absolute
+			bottom: 0
+			box-shadow: 0 -70px 40px -30px rgba(0,0,0,0.5) inset
+			z-index: 0
+			border-radius: 5px
+		
+		&[style]:hover::after
+			box-shadow: 0 -80px 60px -30px rgba(0,0,0,0.5) inset, 0 40px 40px -30px rgba(0,0,0,0.5) inset
+			
+		
+		&:hover
+			.ddrdragfiles
+				&__remove
+					pointer-events: auto
+					opacity: 1	
+	 
+	
+	&__filename
+		position: relative
+		align-self: flex-end
+		color: #fff
+		margin-bottom: 5px
+		font-size: 12px
+		word-break: break-all
+		display: block
+		padding-left: 15px
+		padding-right: 15px
+		text-align: center
+		z-index: 1
+		
+		&::after
+			content: '\f040'
+			+font(fontawesome)
+			position: absolute
+			opacity: 0
+			margin-left: 3px
+			
+			transition: opacity 0.16s
+		
+		&:hover::after, &:focus::after
+			opacity: 1
+		
+		
+	
+	&__remove
+		position: absolute
+		top: 10px
+		right: 10px
+		font-size: 20px
+		color: #9a6262
+		pointer-events: none
+		opacity: 0
+		cursor: pointer
+		z-index: 1
+		transition: opacity 0.16s
+		
+		&:hover
+			color: #c51f1f
+	
+	&__loading
+		font-size: 40px
+		color: #6a6a82
+	
+	
+	&__dropitem
+		border: 2px dashed #cfcfcf
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		height: 80px
+		width: 100%
+		border-radius: 5px
+		background-color: #e3dfeb
+		cursor: pointer
+		transition: background-color 0.16s
+		
+		> *
+			pointer-events: none
+		
+		svg
+			width: 50px
+			height: 50px
+			fill: #333
+			margin-bottom: 1rem
+			transition: fill 0.16s
+		
+		span
+			font-size: 16px
+			color: #333
+		
+		&_hover, &:hover
+			background-color: darken(#e3dfeb, 3%)
+			
+			svg
+				fill: #6b27fd
+			
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+.ratingblock
+	display: flex
+	margin-left: -5px
+	margin-right: -5px
+	position: relative
+	top: -2px
+	
+	&_hovered
+		display: inline-flex
+		transform: scaleX(-1)
+		
+		input:checked ~ label
+			svg
+				fill: #ffd202
+		
+		input[type="radio"]
+			display: none
+		
+		&:hover
+			.ratingblock__item
+				cursor: pointer
+				
+				svg
+					fill: #ececec
+			
+		.ratingblock__item:hover		
+			svg
+				fill: #ffd202
+			
+			~ .ratingblock__item
+				svg
+					fill: #ffd202
+					//fill: #ececec
+	
+	&__item
+		padding-left: 5px
+		padding-right: 5px
+		
+		> div
+			position: relative
+			width: 40px
+			height: 40px
+			
+			> svg
+				position: absolute
+				width: 40px
+				height: 40px
+				top: 0
+				left: 0
+				fill: #ececec
+			
+			&.small
+				width: 24px
+				height: 24px
+				
+				> svg
+					width: 24px
+					height: 24px
+			
+			&.verysmall
+				width: 16px
+				height: 16px
+				
+				> svg
+					width: 16px
+					height: 16px
+	
+	
+	&__visible
+		position: absolute
+		width: 100%
+		height: 100%
+		overflow: hidden
+		
+		svg
+			width: 40px
+			height: 40px
+			top: 0
+			left: 0
+			fill: #ffd202
+		
+		&_small
+			svg
+				width: 24px
+				height: 24px
+		
+		&_verysmall
+			svg
+				width: 16px
+				height: 16px
+	
+
+
+
+.commoncallback
+	&__block
+		display: flex
+		align-items: center
+		justify-content: center
+		background:		
+			repeat: no-repeat
+			size: cover
+			position: center center
+	
+	&__button

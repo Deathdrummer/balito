@@ -1,0 +1,8 @@
+location / {
+if ($http_host ~ "(.*)"){
+rewrite ^/(.*)(/)$ /$1 redirect;
+}
+if (!-e $request_filename){
+rewrite ^(.*)$ /index.php/$1 break;
+}
+}
